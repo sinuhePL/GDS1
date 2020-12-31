@@ -18,6 +18,7 @@ public class GroundController : MonoBehaviour
     private float vehicleAcceleration;
     private float defaultVehicleSpeed;
     private int maxSpeedChange;
+    private bool isVehicleDestroyed;
 
     private void moveGround()
     {
@@ -26,11 +27,11 @@ public class GroundController : MonoBehaviour
 
     private void manageInput()
     {
-        if (Input.GetAxis("Horizontal") > 0.0f && currentVehicleSpeed <= maxVehicleSpeed)
+        if (Input.GetAxis("Horizontal") > 0.5f && currentVehicleSpeed <= maxVehicleSpeed)
         {
             currentVehicleSpeed += Time.deltaTime * vehicleAcceleration;
         }
-        else if (Input.GetAxis("Horizontal") < 0.0f && currentVehicleSpeed >= minVehicleSpeed)
+        else if (Input.GetAxis("Horizontal") < -0.5f && currentVehicleSpeed >= minVehicleSpeed)
         {
             currentVehicleSpeed -= Time.deltaTime * vehicleAcceleration;
         }
@@ -43,7 +44,18 @@ public class GroundController : MonoBehaviour
             currentVehicleSpeed += Time.deltaTime * vehicleAcceleration;
         }
     }
-    
+
+    private void StopGroundMove()
+    {
+        currentVehicleSpeed = 0.0f;
+        isVehicleDestroyed = true;
+    }
+
+    private void OnDestroy()
+    {
+        EventsManager.instance.VehicleDestroyed -= StopGroundMove;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,12 +67,17 @@ public class GroundController : MonoBehaviour
         currentVehicleSpeed = defaultVehicleSpeed;
         maxVehicleSpeed = defaultVehicleSpeed * (1 + ((float)maxSpeedChange / 100));
         minVehicleSpeed = defaultVehicleSpeed * (1 - ((float)maxSpeedChange / 100));
+        EventsManager.instance.VehicleDestroyed += StopGroundMove;
+        isVehicleDestroyed = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        moveGround();
-        manageInput();
+        if (!isVehicleDestroyed)
+        {
+            moveGround();
+            manageInput();
+        }
     }
 }

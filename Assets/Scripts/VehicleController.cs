@@ -34,6 +34,7 @@ public class VehicleController : MonoBehaviour
     private float minVehicleSpeed;
     private float currentVehicleSpeed;
     private float sidewaysVehicleSpeed;
+    private bool isDestroyed;
 
     private void moveVehicle()
     {
@@ -93,6 +94,13 @@ public class VehicleController : MonoBehaviour
         return maxSpeedChange;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        EventsManager.instance.OnVehicleDestroyed();
+        currentVehicleSpeed = 0.0f;
+        isDestroyed = true;
+    }
+
     // Sideways speed is determined based on assumption that time of speed change must be equal to time of sideways move.
     // So sideways move range divided by sideways move speed must be equal to vehicle speed max change divided by vehicle acceleration
     void Start()
@@ -101,11 +109,15 @@ public class VehicleController : MonoBehaviour
         maxVehicleSpeed = defaultVehicleSpeed * (1 + ((float)maxSpeedChange / 100));
         minVehicleSpeed = defaultVehicleSpeed * (1 - ((float)maxSpeedChange / 100));
         sidewaysVehicleSpeed = 100 * sidewaysRange * vehicleAcceleration / (defaultVehicleSpeed * (100 - maxSpeedChange));
+        isDestroyed = false;
     }
 
     void Update()
     {
-        moveVehicle();
-        manageInput();
+        if (!isDestroyed)
+        {
+            moveVehicle();
+            manageInput();
+        }
     }
 }

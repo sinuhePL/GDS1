@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class VehicleController : MonoBehaviour
 {
-    [Header("Dependencies:")]
+    [Header("Technical:")]
     [SerializeField] private Transform wheel1;
     [SerializeField] private Transform wheel2;
     [SerializeField] private Transform wheel3;
+    [SerializeField] private GameObject bulletUpPrefab;
+    [SerializeField] private Transform bulletUpSpawnPoint;
+    [SerializeField] private GameObject bulletForwardPrefab;
+    [SerializeField] private Transform bulletForwardSpawnPoint;
     [Header("For designers:")]
     [Tooltip("Initial upward speed when pressing [7]")]
     [Range(1.0f, 5.0f)]
@@ -29,12 +33,14 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private float sidewaysRange = 1.5f;
 
     private float upwardSpeed = 0.0f;
-    private bool isJumping = false;
+    private bool isJumping;
+    private bool isFiring;
     private float maxVehicleSpeed;
     private float minVehicleSpeed;
     private float currentVehicleSpeed;
     private float sidewaysVehicleSpeed;
     private bool isDestroyed;
+    private GameObject lastForwardBullet;
 
     private void moveVehicle()
     {
@@ -77,6 +83,13 @@ public class VehicleController : MonoBehaviour
             currentVehicleSpeed += Time.deltaTime * vehicleAcceleration;
             transform.Translate(new Vector3(sidewaysVehicleSpeed * Time.deltaTime, 0.0f, 0.0f));
         }
+        if (Input.GetAxis("Fire2") > 0.0f && !isFiring)
+        {
+            isFiring = true;
+            Instantiate(bulletUpPrefab, bulletUpSpawnPoint.position, bulletUpPrefab.transform.rotation);
+            if(lastForwardBullet == null || !lastForwardBullet.activeInHierarchy) lastForwardBullet = Instantiate(bulletForwardPrefab, bulletForwardSpawnPoint.position, bulletForwardPrefab.transform.rotation);
+        }
+        else if(Input.GetAxis("Fire2") == 0.0f) isFiring = false;
     }
 
     public float GetDefaultVehicleSpeed()
@@ -110,6 +123,9 @@ public class VehicleController : MonoBehaviour
         minVehicleSpeed = defaultVehicleSpeed * (1 - ((float)maxSpeedChange / 100));
         sidewaysVehicleSpeed = 100 * sidewaysRange * vehicleAcceleration / (defaultVehicleSpeed * (100 - maxSpeedChange));
         isDestroyed = false;
+        isJumping = false;
+        isFiring = false;
+        lastForwardBullet = null;
     }
 
     void Update()

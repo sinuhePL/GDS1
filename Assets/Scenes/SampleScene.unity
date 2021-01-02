@@ -806,6 +806,12 @@ MonoBehaviour:
   wheel1: {fileID: 1212537014}
   wheel2: {fileID: 1411566388}
   wheel3: {fileID: 656776291}
+  bulletUpPrefab: {fileID: 8703001604257972225, guid: 3fd382e8a16a0564bb1dc2383574f48a,
+    type: 3}
+  bulletUpSpawnPoint: {fileID: 1513749535}
+  bulletForwardPrefab: {fileID: 5309408620145665620, guid: 90e00bfb9f93af140abf29fad797d22f,
+    type: 3}
+  bulletForwardSpawnPoint: {fileID: 1439331096}
   jumpSpeed: 2.31
   moonAccelerationConstant: 3
   defaultVehicleSpeed: 2.79

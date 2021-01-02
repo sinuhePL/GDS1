@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1098866102139349980}
   - component: {fileID: 1098866102139349955}
   - component: {fileID: 1098866102139349954}
+  - component: {fileID: 7760256523626286850}
   m_Layer: 0
   m_Name: rock_small
   m_TagString: Hole
@@ -98,3 +99,15 @@ CapsuleCollider2D:
   m_Offset: {x: -0.023952063, y: -0.4417264}
   m_Size: {x: 1.2353393, y: 1.2353393}
   m_Direction: 1
+--- !u!114 &7760256523626286850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098866102139349953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332a3c8a850eb0b4eab7577c0e620345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

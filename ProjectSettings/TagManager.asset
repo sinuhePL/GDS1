@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Hole
   - Bullet
+  - Obstacle
+  - Level
   layers:
   - Default
   - TransparentFX

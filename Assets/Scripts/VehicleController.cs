@@ -12,7 +12,16 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private Transform bulletUpSpawnPoint;
     [SerializeField] private GameObject bulletForwardPrefab;
     [SerializeField] private Transform bulletForwardSpawnPoint;
+    [SerializeField] private Transform ground;
+    [SerializeField] private Transform backgroundClose;
+    [SerializeField] private Transform backgroundFar;
     [Header("For designers:")]
+    [Tooltip("Close background speed relative to vehicle speed")]
+    [Range(-1.0f, 0.0f)]
+    [SerializeField] private float closeBackgroundSpeedFactor = 0.2f;
+    [Tooltip("Far background speed relative to vehicle speed")]
+    [Range(-1.0f, 0.0f)]
+    [SerializeField] private float farBackgroundSpeedFactor = 0.1f;
     [Tooltip("Initial upward speed when pressing [7]")]
     [Range(1.0f, 5.0f)]
     [SerializeField] private float jumpSpeed = 1.5f;
@@ -41,6 +50,10 @@ public class VehicleController : MonoBehaviour
     private float sidewaysVehicleSpeed;
     private bool isDestroyed;
     private GameObject lastForwardBullet;
+    private float lastLevelPositionGround;
+    private float lastLevelPositionCloseBackground;
+    private float lastLevelPositionFarBackground;
+    private Vector3 startingPosition;
 
     private void moveVehicle()
     {
@@ -54,6 +67,13 @@ public class VehicleController : MonoBehaviour
             isJumping = false;
             upwardSpeed = 0.0f;
         }
+    }
+
+    private void moveGround()
+    {
+        ground.transform.Translate(new Vector3(-Time.deltaTime * currentVehicleSpeed, 0.0f, 0.0f));
+        backgroundClose.transform.Translate(new Vector3(Time.deltaTime * currentVehicleSpeed * closeBackgroundSpeedFactor, 0.0f, 0.0f));
+        backgroundFar.transform.Translate(new Vector3(Time.deltaTime * currentVehicleSpeed * farBackgroundSpeedFactor, 0.0f, 0.0f));
     }
 
     private void manageInput()
@@ -107,11 +127,31 @@ public class VehicleController : MonoBehaviour
         return maxSpeedChange;
     }
 
+    private IEnumerator WaitAndResume()
+    {
+        yield return new WaitForSeconds(1.0f);
+        isDestroyed = false;
+        currentVehicleSpeed = defaultVehicleSpeed;
+        ground.transform.position = new Vector3(lastLevelPositionGround, ground.transform.position.y, ground.transform.position.z);
+        backgroundClose.transform.position = new Vector3(lastLevelPositionCloseBackground, backgroundClose.transform.position.y, backgroundClose.transform.position.z);
+        backgroundFar.transform.position = new Vector3(lastLevelPositionFarBackground, backgroundFar.transform.position.y, backgroundFar.transform.position.z);
+        transform.position = startingPosition;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        EventsManager.instance.OnVehicleDestroyed();
-        currentVehicleSpeed = 0.0f;
-        isDestroyed = true;
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            currentVehicleSpeed = 0.0f;
+            isDestroyed = true;
+            StartCoroutine(WaitAndResume());
+        }
+        else if (collision.gameObject.tag == "Level")
+        {
+            lastLevelPositionGround = ground.transform.position.x;
+            lastLevelPositionCloseBackground = backgroundClose.transform.position.x;
+            lastLevelPositionFarBackground = backgroundFar.transform.position.x;
+        }
     }
 
     // Sideways speed is determined based on assumption that time of speed change must be equal to time of sideways move.
@@ -126,6 +166,10 @@ public class VehicleController : MonoBehaviour
         isJumping = false;
         isFiring = false;
         lastForwardBullet = null;
+        lastLevelPositionGround = ground.transform.position.x;
+        lastLevelPositionCloseBackground = backgroundClose.transform.position.x;
+        lastLevelPositionFarBackground = backgroundFar.transform.position.x;
+        startingPosition = transform.position;
     }
 
     void Update()
@@ -133,6 +177,7 @@ public class VehicleController : MonoBehaviour
         if (!isDestroyed)
         {
             moveVehicle();
+            moveGround();
             manageInput();
         }
     }

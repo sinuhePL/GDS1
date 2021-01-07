@@ -13,6 +13,8 @@ public class EnemySpawnerController : MonoBehaviour
     [Tooltip("Time between enemies in wave")]
     [Range(0.2f, 2.0f)]
     [SerializeField] private float enemiesDelay = 0.5f;
+    [Tooltip("Spawnpoints for enemies")]
+    [SerializeField] private Transform[] spawnPoints;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,9 +26,14 @@ public class EnemySpawnerController : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
+        GameObject newEnemy;
+        int spawnPointIndex = 0;
+
         for(int i=0; i<enemiesCount;i++)
         {
-            Instantiate(enemyPrefab, enemyPrefab.transform.position, enemyPrefab.transform.rotation);
+            newEnemy = Instantiate(enemyPrefab, spawnPoints[spawnPointIndex].position, enemyPrefab.transform.rotation);
+            spawnPointIndex++;
+            if (spawnPoints.Length <= spawnPointIndex) spawnPointIndex = 0;
             yield return new WaitForSeconds(enemiesDelay);
         }
     }

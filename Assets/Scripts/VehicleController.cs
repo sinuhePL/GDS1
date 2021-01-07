@@ -140,7 +140,7 @@ public class VehicleController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Obstacle")
+        if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Bomb")
         {
             currentVehicleSpeed = 0.0f;
             isDestroyed = true;
@@ -158,6 +158,7 @@ public class VehicleController : MonoBehaviour
     // So sideways move range divided by sideways move speed must be equal to vehicle speed max change divided by vehicle acceleration
     void Start()
     {
+        Random.InitState(System.Environment.TickCount);
         currentVehicleSpeed = defaultVehicleSpeed;
         maxVehicleSpeed = defaultVehicleSpeed * (1 + ((float)maxSpeedChange / 100));
         minVehicleSpeed = defaultVehicleSpeed * (1 - ((float)maxSpeedChange / 100));

@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Level
   - Vehicle
+  - Bomb
   layers:
   - Default
   - TransparentFX

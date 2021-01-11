@@ -7,15 +7,20 @@ public class EnemyController : MonoBehaviour
     [Header("Technical:")]
     [Tooltip("Position where animation starts")]
     [SerializeField]
-    public Vector3 animationStartPosition = new Vector3(-3.0f, 7.86f, 0.0f);
+    protected Vector3 animationStartPosition = new Vector3(-3.0f, 7.86f, 0.0f);
     [SerializeField]
-    public GameObject bombPrefab;
-    public Transform bombSpawnPoint;
+    private GameObject bombPrefab;
+    [SerializeField]
+    private Transform bombSpawnPoint;
+    [Header("For designers:")]
+    [Tooltip("Probability of dropping bomb in drop point.")]
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float bombProbability = 0.5f;
 
-    private Animator myAnimator;
-    private const float speed = 10.0f;
+    protected Animator myAnimator;
+    protected const float speed = 10.0f;
 
-    private IEnumerator MoveToPosition()
+    protected virtual IEnumerator MoveToPosition()
     {
         float step;
         
@@ -28,24 +33,18 @@ public class EnemyController : MonoBehaviour
         myAnimator.enabled = true;
     }
 
-    private void DropBomb()
+    protected void DropBomb()
     {
-        if(Random.Range(0.0f, 1.0f) < 0.5f)
+        if(Random.Range(0.0f, 1.0f) < bombProbability)
         {
             Instantiate(bombPrefab, bombSpawnPoint.transform.position, bombPrefab.transform.rotation);
         }
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         myAnimator = GetComponent<Animator>();
         StartCoroutine(MoveToPosition());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

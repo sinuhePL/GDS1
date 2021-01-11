@@ -9,6 +9,7 @@ TagManager:
   - Level
   - Vehicle
   - Bomb
+  - Ground
   layers:
   - Default
   - TransparentFX

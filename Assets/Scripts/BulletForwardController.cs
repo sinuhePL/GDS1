@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BulletForwardController : MonoBehaviour
 {
-
+    [Header("Technical:")]
+    [SerializeField]
+    private ParticleSystem destructionBlastPrefab;
     [Header("For designers:")]
     [Tooltip("Bullet speed")]
     [Range(1.0f, 8.0f)]
@@ -24,12 +26,25 @@ public class BulletForwardController : MonoBehaviour
     private void MoveBullet()
     {
         transform.Translate(new Vector3(Time.deltaTime * bulletSpeed, 0.0f, 0.0f));
-        if (transform.position.x - startingPosition.x > bulletRange) Destroy(gameObject);
+        if (transform.position.x - startingPosition.x > bulletRange)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         MoveBullet();
+    }
+
+    private void OnDestroy()
+    {
+        ParticleSystem myParticleSystem;
+        ParticleSystem.MainModule psmain;
+
+        myParticleSystem = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
+        psmain = myParticleSystem.main;
+        psmain.startLifetime = 0.2f;
     }
 }

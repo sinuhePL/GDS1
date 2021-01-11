@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VehicleController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private Transform ground;
     [SerializeField] private Transform backgroundClose;
     [SerializeField] private Transform backgroundFar;
+    [SerializeField] private Text pointsCounter;
     [Header("For designers:")]
     [Tooltip("Close background speed relative to vehicle speed")]
     [Range(-1.0f, 0.0f)]
@@ -40,6 +42,9 @@ public class VehicleController : MonoBehaviour
     [Tooltip("Vehicle sideways movement range.")]
     [Range(0.5f, 3.0f)]
     [SerializeField] private float sidewaysRange = 1.5f;
+    [Tooltip("Number of Lives.")]
+    [Range(0.5f, 3.0f)]
+    [SerializeField] private int numberOfLives = 4;
 
     private float upwardSpeed = 0.0f;
     private bool isJumping;
@@ -144,6 +149,9 @@ public class VehicleController : MonoBehaviour
         {
             currentVehicleSpeed = 0.0f;
             isDestroyed = true;
+            EventsManager.instance.OnVehicleDestroyed();
+            numberOfLives--;
+            pointsCounter.text = numberOfLives.ToString();
             StartCoroutine(WaitAndResume());
         }
         else if (collision.gameObject.tag == "Level")
@@ -171,6 +179,7 @@ public class VehicleController : MonoBehaviour
         lastLevelPositionCloseBackground = backgroundClose.transform.position.x;
         lastLevelPositionFarBackground = backgroundFar.transform.position.x;
         startingPosition = transform.position;
+        pointsCounter.text = numberOfLives.ToString();
     }
 
     void Update()

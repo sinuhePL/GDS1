@@ -12,7 +12,12 @@ public class DestroyMe : MonoBehaviour
     {
         if(collision.gameObject.tag == "Bullet")
         {
-            if(destructionBlastPrefab != null) Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
+            if (destructionBlastPrefab != null)
+            {
+                ParticleSystem myParticleSystem;
+                myParticleSystem = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
+                Destroy(myParticleSystem.gameObject, myParticleSystem.main.duration);
+            }
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

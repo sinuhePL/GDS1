@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class VehicleController : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private Transform backgroundClose;
     [SerializeField] private Transform backgroundFar;
     [SerializeField] private Text pointsCounter;
+    [SerializeField] private Text levelField;
     [Header("For designers:")]
     [Tooltip("Close background speed relative to vehicle speed")]
     [Range(-1.0f, 0.0f)]
@@ -43,7 +45,7 @@ public class VehicleController : MonoBehaviour
     [Range(0.5f, 3.0f)]
     [SerializeField] private float sidewaysRange = 1.5f;
     [Tooltip("Number of Lives.")]
-    [Range(0.5f, 3.0f)]
+    [Range(1, 5)]
     [SerializeField] private int numberOfLives = 4;
 
     private float upwardSpeed = 0.0f;
@@ -156,9 +158,12 @@ public class VehicleController : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Level")
         {
+            TextMeshPro myTextMeshPro;
             lastLevelPositionGround = ground.transform.position.x;
             lastLevelPositionCloseBackground = backgroundClose.transform.position.x;
             lastLevelPositionFarBackground = backgroundFar.transform.position.x;
+            myTextMeshPro = collision.gameObject.GetComponentInChildren<TextMeshPro>();
+            levelField.text = myTextMeshPro.text;
         }
     }
 

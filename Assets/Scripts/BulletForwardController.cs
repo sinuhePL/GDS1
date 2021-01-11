@@ -46,5 +46,6 @@ public class BulletForwardController : MonoBehaviour
         myParticleSystem = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
         psmain = myParticleSystem.main;
         psmain.startLifetime = 0.2f;
+        Destroy(myParticleSystem.gameObject, myParticleSystem.main.duration);
     }
 }

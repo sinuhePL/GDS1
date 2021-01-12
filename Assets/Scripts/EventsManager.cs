@@ -9,6 +9,7 @@ public class EventsManager : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if (instance == null)
             instance = this;
         else

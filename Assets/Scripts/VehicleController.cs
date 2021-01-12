@@ -17,37 +17,10 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private Transform ground;
     [SerializeField] private Transform backgroundClose;
     [SerializeField] private Transform backgroundFar;
-    [SerializeField] private Text pointsCounter;
-    [SerializeField] private Text levelField;
-    [Header("For designers:")]
-    [Tooltip("Close background speed relative to vehicle speed")]
-    [Range(-1.0f, 0.0f)]
-    [SerializeField] private float closeBackgroundSpeedFactor = 0.2f;
-    [Tooltip("Far background speed relative to vehicle speed")]
-    [Range(-1.0f, 0.0f)]
-    [SerializeField] private float farBackgroundSpeedFactor = 0.1f;
-    [Tooltip("Initial upward speed when pressing [7]")]
-    [Range(1.0f, 5.0f)]
-    [SerializeField] private float jumpSpeed = 1.5f;
-    [Tooltip("Moon gravity constant.")]
-    [Range(1.0f, 5.0f)]
-    [SerializeField] private float moonAccelerationConstant = 3.0f;
-    [Tooltip("Default speed of vehicle when no buttons are pressed.")]
-    [Range(1.0f, 5.0f)]
-    [SerializeField] private float defaultVehicleSpeed = 1.5f;
-    [Tooltip("Vehicle max speed change in %.")]
-    [Range(10, 100)]
-    [SerializeField] private int maxSpeedChange = 50;
-    [Tooltip("Vehicle acceleration/deceleration")]
-    [Range(0.1f, 0.8f)]
-    [SerializeField] private float vehicleAcceleration = 0.4f;
-    [Tooltip("Vehicle sideways movement range.")]
-    [Range(0.5f, 3.0f)]
-    [SerializeField] private float sidewaysRange = 1.5f;
-    [Tooltip("Number of Lives.")]
-    [Range(1, 5)]
-    [SerializeField] private int numberOfLives = 4;
 
+    private Text livesCounter;
+    private Text levelField;
+    private GameObject EndPanel;
     private float upwardSpeed = 0.0f;
     private bool isJumping;
     private bool isFiring;
@@ -61,6 +34,15 @@ public class VehicleController : MonoBehaviour
     private float lastLevelPositionCloseBackground;
     private float lastLevelPositionFarBackground;
     private Vector3 startingPosition;
+    private float moonAccelerationConstant;
+    private float closeBackgroundSpeedFactor;
+    private float farBackgroundSpeedFactor;
+    private float jumpSpeed;
+    private float vehicleAcceleration;
+    private float defaultVehicleSpeed;
+    private int maxSpeedChange;
+    private int numberOfLives;
+    private float sidewaysRange;
 
     private void moveVehicle()
     {
@@ -153,7 +135,7 @@ public class VehicleController : MonoBehaviour
             isDestroyed = true;
             EventsManager.instance.OnVehicleDestroyed();
             numberOfLives--;
-            pointsCounter.text = numberOfLives.ToString();
+            livesCounter.text = numberOfLives.ToString();
             StartCoroutine(WaitAndResume());
         }
         else if (collision.gameObject.tag == "Level")
@@ -164,17 +146,34 @@ public class VehicleController : MonoBehaviour
             lastLevelPositionFarBackground = backgroundFar.transform.position.x;
             myTextMeshPro = collision.gameObject.GetComponentInChildren<TextMeshPro>();
             levelField.text = myTextMeshPro.text;
+            if (levelField.text == "E" || levelField.text == "J" || levelField.text == "O")
+            {
+                currentVehicleSpeed = 0.0f;
+                EndPanel.GetComponent<EndChapterController>().ShowYourself();
+            }
         }
     }
 
-    // Sideways speed is determined based on assumption that time of speed change must be equal to time of sideways move.
-    // So sideways move range divided by sideways move speed must be equal to vehicle speed max change divided by vehicle acceleration
     void Start()
     {
-        Random.InitState(System.Environment.TickCount);
+        livesCounter = GameObject.Find("UILivesCounter").GetComponent<Text>();
+        levelField = GameObject.Find("PointField").GetComponent<Text>();
+        EndPanel = GameObject.Find("EndChapterPanel");
+        EndPanel.SetActive(false);
+        moonAccelerationConstant = VehicleOptionsController.instance.GetMoonAccelerationConstant();
+        closeBackgroundSpeedFactor = VehicleOptionsController.instance.GetCloseBackgroundSpeedFactor();
+        farBackgroundSpeedFactor = VehicleOptionsController.instance.GetFarBackgroundSpeedFactor();
+        jumpSpeed = VehicleOptionsController.instance.GetJumpSpeed();
+        vehicleAcceleration = VehicleOptionsController.instance.GetVehicleAcceleration();
+        defaultVehicleSpeed = VehicleOptionsController.instance.GetDefaultVehicleSpeed();
+        maxSpeedChange = VehicleOptionsController.instance.GetMaxSpeedChange();
+        numberOfLives = VehicleOptionsController.instance.GetNumberOfLives();
+        sidewaysRange = VehicleOptionsController.instance.GetSidewaysRange();
         currentVehicleSpeed = defaultVehicleSpeed;
         maxVehicleSpeed = defaultVehicleSpeed * (1 + ((float)maxSpeedChange / 100));
         minVehicleSpeed = defaultVehicleSpeed * (1 - ((float)maxSpeedChange / 100));
+        // Sideways speed is determined based on assumption that time of speed change must be equal to time of sideways move.
+        // So sideways move range divided by sideways move speed must be equal to vehicle speed max change divided by vehicle acceleration
         sidewaysVehicleSpeed = 100 * sidewaysRange * vehicleAcceleration / (defaultVehicleSpeed * (100 - maxSpeedChange));
         isDestroyed = false;
         isJumping = false;
@@ -184,8 +183,8 @@ public class VehicleController : MonoBehaviour
         lastLevelPositionCloseBackground = backgroundClose.transform.position.x;
         lastLevelPositionFarBackground = backgroundFar.transform.position.x;
         startingPosition = transform.position;
-        pointsCounter.text = numberOfLives.ToString();
-    }
+        livesCounter.text = numberOfLives.ToString();
+}
 
     void Update()
     {

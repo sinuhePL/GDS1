@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructionBlastPrefab: {fileID: 8651647781833780237, guid: 81d777fc148768c488f53f8beb41fa38,
     type: 3}
+  score: 200
 --- !u!58 &537893405976181016
 CircleCollider2D:
   m_ObjectHideFlags: 0

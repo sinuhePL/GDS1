@@ -311,11 +311,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1870718161722377559, guid: c00e57f6e35e6fe4da5d205417bcce53,
     type: 3}
-  enemiesCount: 2
+  scorePrefab: {fileID: 6188771287858638180, guid: d1c33642bd86c3a4cb0c0afe3849ed43,
+    type: 3}
+  enemiesCount: 3
   enemiesDelay: 1.636
   spawnPoints:
   - {fileID: 2061866009}
   - {fileID: 45762179}
+  waveScore: 400
 --- !u!61 &99522425
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1313,11 +1316,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4741490255748065021, guid: 1bddec9700e92294190fd91581004fe6,
     type: 3}
+  scorePrefab: {fileID: 6188771287858638180, guid: d1c33642bd86c3a4cb0c0afe3849ed43,
+    type: 3}
   enemiesCount: 2
   enemiesDelay: 0.998
   spawnPoints:
   - {fileID: 45762179}
   - {fileID: 1762598290}
+  waveScore: 400
 --- !u!61 &983357173
 BoxCollider2D:
   m_ObjectHideFlags: 0

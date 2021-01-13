@@ -7,10 +7,10 @@ public class VehicleOptionsController : MonoBehaviour
     [Header("For designers:")]
     [Tooltip("Close background speed relative to vehicle speed")]
     [Range(-1.0f, 0.0f)]
-    [SerializeField] private float closeBackgroundSpeedFactor = -0.8f;
+    [SerializeField] private float closeBackgroundSpeedFactor = -0.2f;
     [Tooltip("Far background speed relative to vehicle speed")]
     [Range(-1.0f, 0.0f)]
-    [SerializeField] private float farBackgroundSpeedFactor = -0.9f;
+    [SerializeField] private float farBackgroundSpeedFactor = -0.1f;
     [Tooltip("Initial upward speed when pressing [7]")]
     [Range(1.0f, 5.0f)]
     [SerializeField] private float jumpSpeed = 1.5f;

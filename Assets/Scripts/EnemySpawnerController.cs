@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class EnemySpawnerController : MonoBehaviour
 {
     [Header("Technical:")]
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private TextMeshPro scorePrefab;
     [Header("For designers:")]
     [Tooltip("Number of enemies in wave")]
     [Range(1, 4)]
@@ -15,6 +18,11 @@ public class EnemySpawnerController : MonoBehaviour
     [SerializeField] private float enemiesDelay = 0.5f;
     [Tooltip("Spawnpoints for enemies")]
     [SerializeField] private Transform[] spawnPoints;
+    [Tooltip("Score for killing all enemies in wave")]
+    [SerializeField] private int waveScore = 400;
+
+    private List<GameObject> enemyList;
+    private Text scoreField;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,9 +40,30 @@ public class EnemySpawnerController : MonoBehaviour
         for(int i=0; i<enemiesCount;i++)
         {
             newEnemy = Instantiate(enemyPrefab, spawnPoints[spawnPointIndex].position, enemyPrefab.transform.rotation);
+            enemyList.Add(newEnemy);
+            newEnemy.GetComponent<EnemyController>().AddMySpawner(gameObject);
             spawnPointIndex++;
             if (spawnPoints.Length <= spawnPointIndex) spawnPointIndex = 0;
             yield return new WaitForSeconds(enemiesDelay);
         }
+    }
+
+    private void Start()
+    {
+        enemyList = new List<GameObject>();
+        scoreField = GameObject.Find("ScoreCounter").GetComponent<Text>();
+    }
+
+    public void SpawnedEnemyKilled(GameObject killedEnemy)
+    {
+        TextMeshPro scoreText;
+        if (enemyList.Count == 1)
+        {
+            scoreField.text = (int.Parse(scoreField.text) + waveScore).ToString("000000");
+            scoreText = Instantiate(scorePrefab, killedEnemy.transform.position, scorePrefab.transform.rotation);
+            scoreText.text = waveScore.ToString();
+            Destroy(scoreText.gameObject, 1.5f);
+        }
+        if(enemyList.Count > 0) enemyList.Remove(killedEnemy);
     }
 }

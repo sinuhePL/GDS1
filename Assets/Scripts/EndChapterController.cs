@@ -11,6 +11,7 @@ public class EndChapterController : MonoBehaviour
     [SerializeField] private Text level;
     [SerializeField] private Text levelField;
     [SerializeField] private Text timeField;
+    [SerializeField] private Text scoreField;
     [SerializeField] private Text averageTimeField;
     [SerializeField] private Text topRecordField;
     [SerializeField] private Text goodBonusText;
@@ -29,7 +30,8 @@ public class EndChapterController : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
         yield return new WaitForSeconds(5.0f);
-        if(SceneManager.GetActiveScene().name == "Chapter1") SceneManager.LoadScene("Chapter2");
+        if(additionalPoints > 0) scoreField.text = (int.Parse(scoreField.text) + int.Parse(bonusField.text)).ToString("000000");
+        if (SceneManager.GetActiveScene().name == "Chapter1") SceneManager.LoadScene("Chapter2");
         else if (SceneManager.GetActiveScene().name == "Chapter2") SceneManager.LoadScene("Chapter3");
         timer.GetComponent<TimerController>().ResetCounter();
         timer.GetComponent<TimerController>().StartCounting();

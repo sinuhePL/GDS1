@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class EnemyController : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float bombProbability = 0.5f;
 
     protected Animator myAnimator;
+    protected GameObject mySpawner;
     protected const float speed = 10.0f;
 
     protected virtual IEnumerator MoveToPosition()
@@ -46,5 +49,15 @@ public class EnemyController : MonoBehaviour
     {
         myAnimator = GetComponent<Animator>();
         StartCoroutine(MoveToPosition());
+    }
+
+    public void AddMySpawner(GameObject spawner)
+    {
+        mySpawner = spawner;
+    }
+
+    private void OnDestroy()
+    {
+        mySpawner.GetComponent<EnemySpawnerController>().SpawnedEnemyKilled(gameObject);
     }
 }

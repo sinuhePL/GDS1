@@ -6,7 +6,7 @@ public class BulletUpController : MonoBehaviour
 {
     [Header("For designers:")]
     [Tooltip("Bullet speed")]
-    [Range(3.0f, 10.0f)]
+    [Range(3.0f, 15.0f)]
     [SerializeField] private float bulletSpeed = 5.0f;
 
     // Start is called before the first frame update

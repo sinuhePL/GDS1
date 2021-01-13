@@ -176,7 +176,7 @@ MonoBehaviour:
     type: 3}
   bombSpawnPoint: {fileID: 5478534339265849666}
   bombProbability: 0.304
-  rotateSpeed: -330
+  rotateSpeed: -304
 --- !u!114 &7756217650759315703
 MonoBehaviour:
   m_ObjectHideFlags: 0

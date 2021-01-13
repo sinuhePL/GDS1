@@ -12,13 +12,13 @@ public class VehicleOptionsController : MonoBehaviour
     [Range(-1.0f, 0.0f)]
     [SerializeField] private float farBackgroundSpeedFactor = -0.1f;
     [Tooltip("Initial upward speed when pressing [7]")]
-    [Range(1.0f, 5.0f)]
+    [Range(1.0f, 10.0f)]
     [SerializeField] private float jumpSpeed = 1.5f;
     [Tooltip("Moon gravity constant.")]
     [Range(1.0f, 5.0f)]
     [SerializeField] private float moonAccelerationConstant = 3.0f;
     [Tooltip("Default speed of vehicle when no buttons are pressed.")]
-    [Range(1.0f, 5.0f)]
+    [Range(1.0f, 10.0f)]
     [SerializeField] private float defaultVehicleSpeed = 1.5f;
     [Tooltip("Vehicle max speed change in %.")]
     [Range(10, 100)]

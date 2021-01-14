@@ -20,6 +20,7 @@ public class VehicleController : MonoBehaviour
 
     private Text livesCounter;
     private Text levelField;
+    private Text scoreField;
     private GameObject EndPanel;
     private float upwardSpeed = 0.0f;
     private bool isJumping;
@@ -136,7 +137,8 @@ public class VehicleController : MonoBehaviour
             EventsManager.instance.OnVehicleDestroyed();
             numberOfLives--;
             livesCounter.text = numberOfLives.ToString();
-            StartCoroutine(WaitAndResume());
+            if (numberOfLives > 0) StartCoroutine(WaitAndResume());
+            else PlayerPrefs.SetInt("highScore", int.Parse(scoreField.text));
         }
         else if (collision.gameObject.tag == "Level")
         {
@@ -158,6 +160,7 @@ public class VehicleController : MonoBehaviour
     {
         livesCounter = GameObject.Find("UILivesCounter").GetComponent<Text>();
         levelField = GameObject.Find("PointField").GetComponent<Text>();
+        scoreField = GameObject.Find("ScoreCounter").GetComponent<Text>();
         EndPanel = GameObject.Find("EndChapterPanel");
         EndPanel.SetActive(false);
         moonAccelerationConstant = VehicleOptionsController.instance.GetMoonAccelerationConstant();

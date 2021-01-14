@@ -41,7 +41,7 @@ public class EndChapterController : MonoBehaviour
             }
             else numberOfRuns = 1;
             PlayerPrefs.SetInt("averageTime1", averageTime);
-            PlayerPrefs.SetInt("numberOfRun1", numberOfRuns);
+            PlayerPrefs.SetInt("numberOfRuns1", numberOfRuns);
         }
         else if (level.text == "J")
         {
@@ -52,7 +52,7 @@ public class EndChapterController : MonoBehaviour
             }
             else numberOfRuns = 1;
             PlayerPrefs.SetInt("averageTime2", averageTime);
-            PlayerPrefs.SetInt("numberOfRun2", numberOfRuns);
+            PlayerPrefs.SetInt("numberOfRuns2", numberOfRuns);
         }
         else
         {
@@ -63,7 +63,7 @@ public class EndChapterController : MonoBehaviour
             }
             else numberOfRuns = 1;
             PlayerPrefs.SetInt("averageTime3", averageTime);
-            PlayerPrefs.SetInt("numberOfRun3", numberOfRuns);
+            PlayerPrefs.SetInt("numberOfRuns3", numberOfRuns);
         }
         if (additionalPoints > 0) scoreField.text = (int.Parse(scoreField.text) + int.Parse(bonusField.text)).ToString("000000");
         if (SceneManager.GetActiveScene().name == "Chapter1") SceneManager.LoadScene("Chapter2");

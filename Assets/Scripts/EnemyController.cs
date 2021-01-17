@@ -7,9 +7,6 @@ using UnityEngine.UI;
 public class EnemyController : MonoBehaviour
 {
     [Header("Technical:")]
-    [Tooltip("Position where animation starts")]
-    [SerializeField]
-    protected Vector3 animationStartPosition = new Vector3(-3.0f, 7.86f, 0.0f);
     [SerializeField]
     private GameObject bombPrefab;
     [SerializeField]
@@ -18,23 +15,12 @@ public class EnemyController : MonoBehaviour
     [Tooltip("Probability of dropping bomb in drop point.")]
     [Range(0.0f, 1.0f)]
     [SerializeField] private float bombProbability = 0.5f;
+    [Tooltip("Probability of changing circle.")]
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float circleChangeProbability = 0.5f;
 
-    protected Animator myAnimator;
     protected GameObject mySpawner;
-    protected const float speed = 10.0f;
-
-    protected virtual IEnumerator MoveToPosition()
-    {
-        float step;
-        
-        while(Vector3.Distance(transform.position, animationStartPosition) > 0.001f)
-        {
-            step = speed * Time.deltaTime; // calculate distance to move
-            transform.position = Vector3.MoveTowards(transform.position, animationStartPosition, step);
-            yield return 0;
-        }
-        myAnimator.enabled = true;
-    }
+    protected Animator myAnimator;
 
     protected void DropBomb()
     {
@@ -44,11 +30,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    protected virtual void Start()
+    protected void ChangeLevel()
     {
-        myAnimator = GetComponent<Animator>();
-        StartCoroutine(MoveToPosition());
+        GetComponentInParent<UfoParentController>().ChangeCircleLevel();
     }
 
     public void AddMySpawner(GameObject spawner)
@@ -56,8 +40,22 @@ public class EnemyController : MonoBehaviour
         mySpawner = spawner;
     }
 
+    protected void ChangeCircle()
+    {
+        if (Random.Range(0.0f, 1.0f) < circleChangeProbability)
+        {
+            if(myAnimator.GetBool("rightCircle")) myAnimator.SetBool("rightCircle", false);
+            else myAnimator.SetBool("rightCircle", true);
+        }
+    }
+
     private void OnDestroy()
     {
-        mySpawner.GetComponent<EnemySpawnerController>().SpawnedEnemyKilled(gameObject);
+        mySpawner.GetComponent<EnemySpawnerController>().SpawnedEnemyKilled(GetComponentInParent<Transform>(), transform.position);
+    }
+
+    private void Start()
+    {
+        myAnimator = GetComponent<Animator>();
     }
 }

@@ -21,8 +21,9 @@ public class EnemySpawnerController : MonoBehaviour
     [Tooltip("Score for killing all enemies in wave")]
     [SerializeField] private int waveScore = 400;
 
-    private List<GameObject> enemyList;
+    private List<Transform> enemyList;
     private Text scoreField;
+    private int spawnedEnemiesCount;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -40,8 +41,9 @@ public class EnemySpawnerController : MonoBehaviour
         for(int i=0; i<enemiesCount;i++)
         {
             newEnemy = Instantiate(enemyPrefab, spawnPoints[spawnPointIndex].position, enemyPrefab.transform.rotation);
-            enemyList.Add(newEnemy);
-            newEnemy.GetComponent<EnemyController>().AddMySpawner(gameObject);
+            enemyList.Add(newEnemy.GetComponent<Transform>());
+            spawnedEnemiesCount++;
+            newEnemy.GetComponentInChildren<EnemyController>().AddMySpawner(gameObject);
             spawnPointIndex++;
             if (spawnPoints.Length <= spawnPointIndex) spawnPointIndex = 0;
             yield return new WaitForSeconds(enemiesDelay);
@@ -50,17 +52,18 @@ public class EnemySpawnerController : MonoBehaviour
 
     private void Start()
     {
-        enemyList = new List<GameObject>();
+        enemyList = new List<Transform>();
         scoreField = GameObject.Find("ScoreCounter").GetComponent<Text>();
+        spawnedEnemiesCount = 0;
     }
 
-    public void SpawnedEnemyKilled(GameObject killedEnemy)
+    public void SpawnedEnemyKilled(Transform killedEnemy, Vector3 childPosition)
     {
         TextMeshPro scoreText;
-        if (enemyList.Count == 1)
+        if (enemyList.Count == 1 && spawnedEnemiesCount == enemiesCount)
         {
             scoreField.text = (int.Parse(scoreField.text) + waveScore).ToString("000000");
-            scoreText = Instantiate(scorePrefab, killedEnemy.transform.position, scorePrefab.transform.rotation);
+            scoreText = Instantiate(scorePrefab, childPosition, scorePrefab.transform.rotation);
             scoreText.text = waveScore.ToString();
             Destroy(scoreText.gameObject, 1.5f);
         }

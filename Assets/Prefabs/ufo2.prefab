@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1870718161722377553}
   - component: {fileID: 1870718161722377555}
   - component: {fileID: 537893405976181016}
-  - component: {fileID: -6246356339671307134}
   - component: {fileID: 7756217650759315703}
+  - component: {fileID: 7762438208619856871}
   m_Layer: 0
   m_Name: ufo2
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870718161722377559}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 7.86, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5478534339265849666}
@@ -159,24 +159,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.64
---- !u!114 &-6246356339671307134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870718161722377559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6422f8560a22a4a977712855d0778c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationStartPosition: {x: -3, y: 6.36, z: 0}
-  bombPrefab: {fileID: 1657450998703068418, guid: 90f47f581d4031e48b98dd8319bcbce5,
-    type: 3}
-  bombSpawnPoint: {fileID: 5478534339265849666}
-  bombProbability: 0.304
-  rotateSpeed: -304
 --- !u!114 &7756217650759315703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +171,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b591f6d50a8dcfe449984c7489cafe0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7762438208619856871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870718161722377559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de660ce1c264ef14094449fc8222b428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombPrefab: {fileID: 1657450998703068418, guid: 90f47f581d4031e48b98dd8319bcbce5,
+    type: 3}
+  bombSpawnPoint: {fileID: 5478534339265849666}
+  bombProbability: 0.334
+  circleChangeProbability: 0.5
 --- !u!1 &5155396041145187564
 GameObject:
   m_ObjectHideFlags: 0

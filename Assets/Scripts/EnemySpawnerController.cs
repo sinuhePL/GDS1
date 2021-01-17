@@ -60,7 +60,7 @@ public class EnemySpawnerController : MonoBehaviour
     public void SpawnedEnemyKilled(Transform killedEnemy, Vector3 childPosition)
     {
         TextMeshPro scoreText;
-        if (enemyList.Count == 1 && spawnedEnemiesCount == enemiesCount)
+        if (enemyList.Count == 1 && spawnedEnemiesCount == enemiesCount && waveScore > 0)
         {
             scoreField.text = (int.Parse(scoreField.text) + waveScore).ToString("000000");
             scoreText = Instantiate(scorePrefab, childPosition, scorePrefab.transform.rotation);

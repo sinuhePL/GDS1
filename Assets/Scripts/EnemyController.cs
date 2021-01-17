@@ -51,7 +51,14 @@ public class EnemyController : MonoBehaviour
 
     private void OnDestroy()
     {
-        mySpawner.GetComponent<EnemySpawnerController>().SpawnedEnemyKilled(GetComponentInParent<Transform>(), transform.position);
+        EnemySpawnerController esc;
+        Transform t;
+        if(mySpawner != null)
+        {
+            esc = mySpawner.GetComponent<EnemySpawnerController>();
+            t = GetComponentInParent<Transform>();
+            if (t != null) esc.SpawnedEnemyKilled(t, transform.position);
+        }
     }
 
     private void Start()

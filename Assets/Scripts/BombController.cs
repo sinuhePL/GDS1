@@ -13,6 +13,7 @@ public class BombController : MonoBehaviour
     [SerializeField] private float moonAccelerationConstant = 3.0f;
 
     private float speed = 0.0f;
+    private Vector3 destination;
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,13 +35,16 @@ public class BombController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        destination = VehicleOptionsController.instance.dropZones[Random.Range(0, VehicleOptionsController.instance.dropZones.Length)].position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        speed -= moonAccelerationConstant * Time.deltaTime;
-        transform.Translate(new Vector3(0.0f, Time.deltaTime * speed, 0.0f));
+        float step;
+
+        speed += moonAccelerationConstant * Time.deltaTime;
+        step = speed * Time.deltaTime; // calculate distance to move
+        transform.position = Vector3.MoveTowards(transform.position, destination, step);
     }
 }

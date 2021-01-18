@@ -44,7 +44,8 @@ public class UfoParentController : MonoBehaviour
             if(isRotating) transform.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * rotateSpeed));
             yield return 0;
         }
-        myChildAnimator.enabled = true;
+        transform.rotation = Quaternion.identity;
+        if(myChildAnimator != null) myChildAnimator.enabled = true;
     }
 
     protected virtual IEnumerator MoveToNewCircle(bool down)

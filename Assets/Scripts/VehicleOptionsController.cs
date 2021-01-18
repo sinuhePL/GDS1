@@ -32,6 +32,8 @@ public class VehicleOptionsController : MonoBehaviour
     [Tooltip("Number of Lives.")]
     [Range(1, 5)]
     [SerializeField] private static int numberOfLives = 4;
+    [Tooltip("Bomb and enemy drop zone")]
+    public Transform[] dropZones;
 
     public static VehicleOptionsController instance;
 

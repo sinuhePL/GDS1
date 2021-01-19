@@ -32,6 +32,8 @@ public class UfoParentController : MonoBehaviour
 
     private Animator myChildAnimator;
     private int circleLevel;
+    private float flyingTime;
+    private bool isLast;
 
     protected virtual IEnumerator MoveToPosition()
     {
@@ -48,6 +50,18 @@ public class UfoParentController : MonoBehaviour
         if(myChildAnimator != null) myChildAnimator.enabled = true;
     }
 
+    protected virtual IEnumerator MoveToDestination(Vector3 destination)
+    {
+        float step;
+        while (Vector3.Distance(transform.position, destination) > 0.001f)
+        {
+            step = moveSpeed/100 * Time.deltaTime; // calculate distance to move
+            transform.position = Vector3.MoveTowards(transform.position, destination, step);
+            if (isRotating) transform.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * rotateSpeed));
+            yield return 0;
+        }
+    }
+
     protected virtual IEnumerator MoveToNewCircle(bool down)
     {
         float step;
@@ -62,6 +76,15 @@ public class UfoParentController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
             yield return 0;
         }
+    }
+
+    public void EndMove(bool toVehicle)
+    {
+        Vector3 tempDestination;
+        if (myChildAnimator != null) myChildAnimator.enabled = false;
+        if(toVehicle) tempDestination = VehicleOptionsController.instance.dropZones[Random.Range(0, VehicleOptionsController.instance.dropZones.Length)].position;
+        else tempDestination = new Vector3(20.0f, transform.position.y, 0.0f);
+        StartCoroutine(MoveToDestination(tempDestination));
     }
 
     public void ChangeCircleLevel()
@@ -94,17 +117,28 @@ public class UfoParentController : MonoBehaviour
         }
     }
 
+    public void SetLast()
+    {
+        isLast = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         myChildAnimator = GetComponentInChildren<Animator>();
         StartCoroutine(MoveToPosition());
         circleLevel = 1;
+        flyingTime = 0.0f;
+        isLast = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        flyingTime += Time.deltaTime;
+        if(flyingTime > 10.0f)
+        {
+            EndMove(isLast);
+        }
     }
 }

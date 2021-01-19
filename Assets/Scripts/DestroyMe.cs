@@ -16,7 +16,7 @@ public class DestroyMe : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Bullet")
+        if(collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Vehicle")
         {
             if (destructionBlastPrefab != null)
             {
@@ -24,8 +24,11 @@ public class DestroyMe : MonoBehaviour
                 myParticleSystem = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
                 Destroy(myParticleSystem.gameObject, myParticleSystem.main.duration);
             }
-            scoreField.text = (int.Parse(scoreField.text) + score).ToString("000000");
-            Destroy(collision.gameObject);
+            if (collision.gameObject.tag == "Bullet")
+            {
+                scoreField.text = (int.Parse(scoreField.text) + score).ToString("000000");
+                Destroy(collision.gameObject);
+            }
             Destroy(gameObject);
         }
     }

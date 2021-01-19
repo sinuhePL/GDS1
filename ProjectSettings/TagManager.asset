@@ -10,6 +10,7 @@ TagManager:
   - Vehicle
   - Bomb
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX

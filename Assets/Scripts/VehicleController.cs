@@ -130,7 +130,7 @@ public class VehicleController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Bomb")
+        if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Bomb" || collision.gameObject.tag == "Enemy")
         {
             currentVehicleSpeed = 0.0f;
             isDestroyed = true;

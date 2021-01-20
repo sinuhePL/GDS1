@@ -24,6 +24,12 @@ public class EnemySpawnerController : MonoBehaviour
     private List<Transform> enemyList;
     private Text scoreField;
     private int spawnedEnemiesCount;
+    private bool isPaused;
+
+    private void Pause()
+    {
+        isPaused = !isPaused;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -40,6 +46,7 @@ public class EnemySpawnerController : MonoBehaviour
 
         for(int i=0; i<enemiesCount;i++)
         {
+            if (isPaused) yield return 0;
             newEnemy = Instantiate(enemyPrefab, spawnPoints[spawnPointIndex].position, enemyPrefab.transform.rotation);
             enemyList.Add(newEnemy.GetComponent<Transform>());
             spawnedEnemiesCount++;
@@ -59,6 +66,8 @@ public class EnemySpawnerController : MonoBehaviour
         enemyList = new List<Transform>();
         scoreField = GameObject.Find("ScoreCounter").GetComponent<Text>();
         spawnedEnemiesCount = 0;
+        isPaused = false;
+        EventsManager.instance.OnPausePressed += Pause;
     }
 
     public void SpawnedEnemyKilled(Transform killedEnemy, Vector3 childPosition)
@@ -72,5 +81,10 @@ public class EnemySpawnerController : MonoBehaviour
             Destroy(scoreText.gameObject, 1.5f);
         }
         if(enemyList.Count > 0) enemyList.Remove(killedEnemy);
+    }
+
+    private void OnDestroy()
+    {
+        EventsManager.instance.OnPausePressed -= Pause;
     }
 }

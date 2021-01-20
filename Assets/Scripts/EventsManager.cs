@@ -18,10 +18,17 @@ public class EventsManager : MonoBehaviour
         }
     }
 
-    public event Action VehicleDestroyed;
+    public event Action OnVehicleDestroyed;
 
-    public void OnVehicleDestroyed()
+    public void VehicleDestroyed()
     {
-        VehicleDestroyed?.Invoke();
+        OnVehicleDestroyed?.Invoke();
+    }
+
+    public event Action OnPausePressed;
+
+    public void PausePressed()
+    {
+        OnPausePressed?.Invoke();
     }
 }

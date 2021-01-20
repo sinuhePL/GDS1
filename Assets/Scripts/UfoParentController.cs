@@ -34,8 +34,26 @@ public class UfoParentController : MonoBehaviour
     private int circleLevel;
     private float flyingTime;
     private bool isLast;
+    private float pausedMoveSpeed;
+    private bool isPaused;
 
-    protected virtual IEnumerator MoveToPosition()
+    private void Pause()
+    {
+        if (isPaused)
+        {
+            moveSpeed = pausedMoveSpeed;
+            if (myChildAnimator != null) myChildAnimator.enabled = true;
+        }
+        else
+        {
+            pausedMoveSpeed = moveSpeed;
+            moveSpeed = 0.0f;
+            if (myChildAnimator != null) myChildAnimator.enabled = false;
+        }
+        isPaused = !isPaused;
+    }
+
+    private IEnumerator MoveToPosition()
     {
         float step;
 
@@ -50,7 +68,7 @@ public class UfoParentController : MonoBehaviour
         if(myChildAnimator != null) myChildAnimator.enabled = true;
     }
 
-    protected virtual IEnumerator MoveToDestination(Vector3 destination)
+    private IEnumerator MoveToDestination(Vector3 destination)
     {
         float step;
         while (Vector3.Distance(transform.position, destination) > 0.001f)
@@ -62,7 +80,7 @@ public class UfoParentController : MonoBehaviour
         }
     }
 
-    protected virtual IEnumerator MoveToNewCircle(bool down)
+    private IEnumerator MoveToNewCircle(bool down)
     {
         float step;
         Vector3 newPosition;
@@ -134,6 +152,8 @@ public class UfoParentController : MonoBehaviour
         StartCoroutine(MoveToPosition());
         circleLevel = 1;
         flyingTime = 0.0f;
+        isPaused = false;
+        EventsManager.instance.OnPausePressed += Pause;
     }
 
     // Update is called once per frame
@@ -144,5 +164,10 @@ public class UfoParentController : MonoBehaviour
         {
             EndMove();
         }
+    }
+
+    private void OnDestroy()
+    {
+        EventsManager.instance.OnPausePressed -= Pause;
     }
 }

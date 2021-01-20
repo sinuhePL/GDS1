@@ -12,12 +12,12 @@ public class DestroyOnPlayerDeath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EventsManager.instance.VehicleDestroyed += DestroyMe;
+        EventsManager.instance.OnVehicleDestroyed += DestroyMe;
     }
 
     private void OnDestroy()
     {
-        EventsManager.instance.VehicleDestroyed -= DestroyMe;
+        EventsManager.instance.OnVehicleDestroyed -= DestroyMe;
     }
 
 }

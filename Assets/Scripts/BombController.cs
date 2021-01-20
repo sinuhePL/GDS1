@@ -14,6 +14,22 @@ public class BombController : MonoBehaviour
 
     private float speed = 0.0f;
     private Vector3 destination;
+    private float pausedSpeed;
+    private bool isPaused;
+
+    private void Pause()
+    {
+        if (isPaused)
+        {
+            speed = pausedSpeed;
+        }
+        else
+        {
+            pausedSpeed = speed;
+            speed = 0.0f;
+        }
+        isPaused = !isPaused;
+    }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,6 +52,8 @@ public class BombController : MonoBehaviour
     void Start()
     {
         destination = VehicleOptionsController.instance.dropZones[Random.Range(0, VehicleOptionsController.instance.dropZones.Length)].position;
+        isPaused = false;
+        EventsManager.instance.OnPausePressed += Pause;
     }
 
     // Update is called once per frame
@@ -43,8 +61,16 @@ public class BombController : MonoBehaviour
     {
         float step;
 
-        speed += moonAccelerationConstant * Time.deltaTime;
-        step = speed * Time.deltaTime; // calculate distance to move
-        transform.position = Vector3.MoveTowards(transform.position, destination, step);
+        if (!isPaused)
+        {
+            speed += moonAccelerationConstant * Time.deltaTime;
+            step = speed * Time.deltaTime; // calculate distance to move
+            transform.position = Vector3.MoveTowards(transform.position, destination, step);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        EventsManager.instance.OnPausePressed -= Pause;
     }
 }

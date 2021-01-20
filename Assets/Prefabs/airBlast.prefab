@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1478962822068097084}
   - component: {fileID: 8651647781833780237}
   - component: {fileID: 7529655532178257912}
+  - component: {fileID: 8443357761221149102}
   m_Layer: 0
   m_Name: airBlast
   m_TagString: Untagged
@@ -4812,3 +4813,15 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &8443357761221149102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557116114881686808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a67a05820179eb48bc4c6a113816fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

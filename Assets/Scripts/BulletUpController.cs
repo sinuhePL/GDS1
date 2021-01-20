@@ -9,10 +9,28 @@ public class BulletUpController : MonoBehaviour
     [Range(3.0f, 15.0f)]
     [SerializeField] private float bulletSpeed = 5.0f;
 
+    private float pausedBulletSpeed;
+    private bool isPaused;
+
+    private void Pause()
+    {
+        if(isPaused)
+        {
+            bulletSpeed = pausedBulletSpeed;
+        }
+        else
+        {
+            pausedBulletSpeed = bulletSpeed;
+            bulletSpeed = 0.0f;
+        }
+        isPaused = !isPaused;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        isPaused = false;
+        EventsManager.instance.OnPausePressed += Pause;
     }
 
     private void MoveBullet()
@@ -25,5 +43,10 @@ public class BulletUpController : MonoBehaviour
     void Update()
     {
         MoveBullet();
+    }
+
+    private void OnDestroy()
+    {
+        EventsManager.instance.OnPausePressed -= Pause;
     }
 }

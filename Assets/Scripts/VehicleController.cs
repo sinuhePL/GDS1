@@ -44,10 +44,13 @@ public class VehicleController : MonoBehaviour
     private int maxSpeedChange;
     private int numberOfLives;
     private float sidewaysRange;
+    private float upwardPauseSpeed;
+    private float currentVehiclePauseSpeed;
+    private bool isPaused;
 
     private void moveVehicle()
     {
-        if (transform.position.y > 0.0f) upwardSpeed -= moonAccelerationConstant * Time.deltaTime;
+        if (transform.position.y > 0.0f && !isPaused) upwardSpeed -= moonAccelerationConstant * Time.deltaTime;
         transform.Translate(new Vector3(0.0f, Time.deltaTime * upwardSpeed, 0.0f));
         wheel1.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * -110.0f));
         wheel2.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * -110.0f));
@@ -68,38 +71,55 @@ public class VehicleController : MonoBehaviour
 
     private void manageInput()
     {
-        if (Input.GetAxis("Fire1") > 0.0f && !isJumping)
+        if (Input.GetAxis("Fire1") > 0.0f && !isJumping && !isPaused)
         {
             isJumping = true;
             upwardSpeed = jumpSpeed;
         }
-        if (Input.GetAxis("Horizontal") > 0.5f && currentVehicleSpeed <= maxVehicleSpeed)
+        if (Input.GetAxis("Horizontal") > 0.5f && currentVehicleSpeed <= maxVehicleSpeed && !isPaused)
         {
             currentVehicleSpeed += Time.deltaTime * vehicleAcceleration;
             transform.Translate(new Vector3(sidewaysVehicleSpeed * Time.deltaTime, 0.0f, 0.0f));
         }
-        else if (Input.GetAxis("Horizontal") < -0.5f && currentVehicleSpeed >= minVehicleSpeed)
+        else if (Input.GetAxis("Horizontal") < -0.5f && currentVehicleSpeed >= minVehicleSpeed && !isPaused)
         {
             currentVehicleSpeed -= Time.deltaTime * vehicleAcceleration;
             transform.Translate(new Vector3(-sidewaysVehicleSpeed * Time.deltaTime, 0.0f, 0.0f));
         }
-        else if (Input.GetAxis("Horizontal") < 0.5f && currentVehicleSpeed > defaultVehicleSpeed * 1.001f)
+        else if (Input.GetAxis("Horizontal") < 0.5f && currentVehicleSpeed > defaultVehicleSpeed * 1.001f && !isPaused)
         {
             currentVehicleSpeed -= Time.deltaTime * vehicleAcceleration;
             transform.Translate(new Vector3(-sidewaysVehicleSpeed * Time.deltaTime, 0.0f, 0.0f));
         }
-        else if (Input.GetAxis("Horizontal") > -0.5f && currentVehicleSpeed < defaultVehicleSpeed * 0.999f)
+        else if (Input.GetAxis("Horizontal") > -0.5f && currentVehicleSpeed < defaultVehicleSpeed * 0.999f && !isPaused)
         {
             currentVehicleSpeed += Time.deltaTime * vehicleAcceleration;
             transform.Translate(new Vector3(sidewaysVehicleSpeed * Time.deltaTime, 0.0f, 0.0f));
         }
-        if (Input.GetAxis("Fire2") > 0.0f && !isFiring)
+        if (Input.GetAxis("Fire2") > 0.0f && !isFiring && !isPaused)
         {
             isFiring = true;
             Instantiate(bulletUpPrefab, bulletUpSpawnPoint.position, bulletUpPrefab.transform.rotation);
             if(lastForwardBullet == null || !lastForwardBullet.activeInHierarchy) lastForwardBullet = Instantiate(bulletForwardPrefab, bulletForwardSpawnPoint.position, bulletForwardPrefab.transform.rotation);
         }
-        else if(Input.GetAxis("Fire2") == 0.0f) isFiring = false;
+        else if(Input.GetAxis("Fire2") == 0.0f && !isPaused) isFiring = false;
+        if(Input.GetKeyDown("p"))
+        {
+            if(isPaused)
+            {
+                currentVehicleSpeed = currentVehiclePauseSpeed;
+                upwardSpeed = upwardPauseSpeed;
+            }
+            else
+            {
+                currentVehiclePauseSpeed = currentVehicleSpeed;
+                currentVehicleSpeed = 0.0f;
+                upwardPauseSpeed = upwardSpeed;
+                upwardSpeed = 0.0f;
+            }
+            isPaused = !isPaused;
+            EventsManager.instance.PausePressed();
+        }
     }
 
     public float GetDefaultVehicleSpeed()
@@ -134,7 +154,7 @@ public class VehicleController : MonoBehaviour
         {
             currentVehicleSpeed = 0.0f;
             isDestroyed = true;
-            EventsManager.instance.OnVehicleDestroyed();
+            EventsManager.instance.VehicleDestroyed();
             numberOfLives--;
             livesCounter.text = numberOfLives.ToString();
             if (numberOfLives > 0) StartCoroutine(WaitAndResume());
@@ -187,6 +207,7 @@ public class VehicleController : MonoBehaviour
         lastLevelPositionFarBackground = backgroundFar.transform.position.x;
         startingPosition = transform.position;
         livesCounter.text = numberOfLives.ToString();
+        isPaused = false;
 }
 
     void Update()

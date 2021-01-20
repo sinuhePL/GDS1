@@ -16,11 +16,29 @@ public class BulletForwardController : MonoBehaviour
     [SerializeField] private float bulletRange = 2.0f;
 
     private Vector3 startingPosition;
+    private float pausedBulletSpeed;
+    private bool isPaused;
+
+    private void Pause()
+    {
+        if (isPaused)
+        {
+            bulletSpeed = pausedBulletSpeed;
+        }
+        else
+        {
+            pausedBulletSpeed = bulletSpeed;
+            bulletSpeed = 0.0f;
+        }
+        isPaused = !isPaused;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         startingPosition = transform.position;
+        isPaused = false;
+        EventsManager.instance.OnPausePressed += Pause;
     }
 
     private void MoveBullet()
@@ -47,5 +65,6 @@ public class BulletForwardController : MonoBehaviour
         psmain = myParticleSystem.main;
         psmain.startLifetime = 0.2f;
         Destroy(myParticleSystem.gameObject, myParticleSystem.main.duration);
+        EventsManager.instance.OnPausePressed -= Pause;
     }
 }

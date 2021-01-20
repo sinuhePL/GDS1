@@ -44,7 +44,10 @@ public class EnemySpawnerController : MonoBehaviour
             enemyList.Add(newEnemy.GetComponent<Transform>());
             spawnedEnemiesCount++;
             newEnemy.GetComponentInChildren<EnemyController>().AddMySpawner(gameObject);
-            if (i == enemiesCount - 1) newEnemy.GetComponent<UfoParentController>().SetLast();
+            if (i == enemiesCount - 1)
+            {
+                newEnemy.GetComponent<UfoParentController>().SetLast();
+            }
             spawnPointIndex++;
             if (spawnPoints.Length <= spawnPointIndex) spawnPointIndex = 0;
             yield return new WaitForSeconds(enemiesDelay);

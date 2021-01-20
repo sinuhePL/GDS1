@@ -55,7 +55,7 @@ public class UfoParentController : MonoBehaviour
         float step;
         while (Vector3.Distance(transform.position, destination) > 0.001f)
         {
-            step = moveSpeed/100 * Time.deltaTime; // calculate distance to move
+            step = moveSpeed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, destination, step);
             if (isRotating) transform.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * rotateSpeed));
             yield return 0;
@@ -78,11 +78,11 @@ public class UfoParentController : MonoBehaviour
         }
     }
 
-    public void EndMove(bool toVehicle)
+    public void EndMove()
     {
         Vector3 tempDestination;
         if (myChildAnimator != null) myChildAnimator.enabled = false;
-        if(toVehicle) tempDestination = VehicleOptionsController.instance.dropZones[Random.Range(0, VehicleOptionsController.instance.dropZones.Length)].position;
+        if(isLast) tempDestination = VehicleOptionsController.instance.dropZones[Random.Range(0, VehicleOptionsController.instance.dropZones.Length)].position;
         else tempDestination = new Vector3(20.0f, transform.position.y, 0.0f);
         StartCoroutine(MoveToDestination(tempDestination));
     }
@@ -122,6 +122,11 @@ public class UfoParentController : MonoBehaviour
         isLast = true;
     }
 
+    private void Awake()
+    {
+        isLast = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -129,16 +134,15 @@ public class UfoParentController : MonoBehaviour
         StartCoroutine(MoveToPosition());
         circleLevel = 1;
         flyingTime = 0.0f;
-        isLast = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         flyingTime += Time.deltaTime;
-        if(flyingTime > 10.0f)
+        if(flyingTime > 10.0f && myChildAnimator != null && myChildAnimator.enabled == true)
         {
-            EndMove(isLast);
+            EndMove();
         }
     }
 }

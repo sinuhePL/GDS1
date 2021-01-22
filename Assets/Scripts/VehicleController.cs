@@ -52,7 +52,7 @@ public class VehicleController : MonoBehaviour
     {
         if (transform.position.y > 0.0f && !isPaused) upwardSpeed -= moonAccelerationConstant * Time.deltaTime;
         transform.Translate(new Vector3(0.0f, Time.deltaTime * upwardSpeed, 0.0f));
-        wheel1.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * -110.0f));
+        wheel1.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * 110.0f));
         wheel2.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * -110.0f));
         wheel3.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * -150.0f));
         if (transform.position.y <= 0.0f)

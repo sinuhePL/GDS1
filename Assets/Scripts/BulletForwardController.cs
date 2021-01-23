@@ -59,12 +59,12 @@ public class BulletForwardController : MonoBehaviour
     private void OnDestroy()
     {
         ParticleSystem myParticleSystem;
-        ParticleSystem.MainModule psmain;
+        //ParticleSystem.MainModule psmain;
 
         myParticleSystem = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
-        psmain = myParticleSystem.main;
-        psmain.startLifetime = 0.2f;
-        Destroy(myParticleSystem.gameObject, myParticleSystem.main.duration);
+        //psmain = myParticleSystem.main;
+        //psmain.startLifetime = 0.2f;
+        if (!myParticleSystem.IsAlive()) Destroy(myParticleSystem.gameObject);
         EventsManager.instance.OnPausePressed -= Pause;
     }
 }

@@ -12,6 +12,8 @@ public class DestroyMe : MonoBehaviour
     [Tooltip("Score for destroying.")]
     [SerializeField] private int score = 0;
 
+    private Animator animator;
+
     protected Text scoreField;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,13 +24,15 @@ public class DestroyMe : MonoBehaviour
             {
                 ParticleSystem myParticleSystem;
                 myParticleSystem = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
-                Destroy(myParticleSystem.gameObject, myParticleSystem.main.duration);
+                if (!myParticleSystem.IsAlive()) Destroy(myParticleSystem.gameObject);
             }
             if (collision.gameObject.tag == "Bullet")
             {
                 scoreField.text = (int.Parse(scoreField.text) + score).ToString("000000");
                 Destroy(collision.gameObject);
             }
+            
+            if (animator != null) animator.SetTrigger("Die");
             Destroy(gameObject);
         }
     }
@@ -36,5 +40,6 @@ public class DestroyMe : MonoBehaviour
     private void Start()
     {
         scoreField = GameObject.Find("ScoreCounter").GetComponent<Text>();
+        animator = GetComponent<Animator>();
     }
 }

@@ -9,6 +9,7 @@ public class VehicleController : MonoBehaviour
     [Header("Technical:")]
     [SerializeField] private Transform wheel1;
     [SerializeField] private Transform wheel2;
+    [SerializeField] private float wheelSpeedMultiplier = 30f;
     [SerializeField] private GameObject bulletUpPrefab;
     [SerializeField] private Transform bulletUpSpawnPoint;
     [SerializeField] private GameObject bulletForwardPrefab;
@@ -51,8 +52,8 @@ public class VehicleController : MonoBehaviour
     {
         if (transform.position.y > 0.384f && !isPaused) upwardSpeed -= moonAccelerationConstant * Time.deltaTime;
         transform.Translate(new Vector3(0.0f, Time.deltaTime * upwardSpeed, 0.0f));
-        wheel1.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * -60.0f));
-        wheel2.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * 60.0f));
+        wheel1.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * -wheelSpeedMultiplier));
+        wheel2.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * wheelSpeedMultiplier));
         if (transform.position.y <= 0.384f)
         {
             isJumping = false;

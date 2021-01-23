@@ -53,7 +53,7 @@ public class EnemyController : MonoBehaviour
     {
         EnemySpawnerController esc;
         Transform t;
-        if(mySpawner != null)
+        if (mySpawner != null)
         {
             esc = mySpawner.GetComponent<EnemySpawnerController>();
             t = GetComponentInParent<Transform>();

@@ -145,5 +145,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructionBlastPrefab: {fileID: 8651647781833780237, guid: 81d777fc148768c488f53f8beb41fa38,
     type: 3}
-  bulletSpeed: 6.55
-  bulletRange: 2.6
+  bulletSpeed: 8
+  bulletRange: 3.5

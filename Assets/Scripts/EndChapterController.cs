@@ -93,7 +93,7 @@ public class EndChapterController : MonoBehaviour
             if (PlayerPrefs.HasKey("topRecord3")) topRecordField.text = PlayerPrefs.GetInt("topRecord3").ToString("000");
         }
         gameObject.SetActive(true);
-        levelField.text = '"'+level.text+'"';
+        levelField.text = "TIME TO REACH POINT" + '"' +level.text+ '"';
         timeField.text = timer.GetComponent<Text>().text;
         if (playerTime < int.Parse(averageTimeField.text))
         {

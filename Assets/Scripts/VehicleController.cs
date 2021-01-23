@@ -168,6 +168,8 @@ public class VehicleController : MonoBehaviour
             if (levelField.text == "E" || levelField.text == "J" || levelField.text == "O")
             {
                 currentVehicleSpeed = 0.0f;
+                upwardSpeed = 0.0f;
+                isPaused = true;
                 EndPanel.GetComponent<EndChapterController>().ShowYourself();
             }
         }

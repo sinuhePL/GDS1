@@ -18,7 +18,6 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private Transform backgroundClose;
     [SerializeField] private Transform backgroundFar;
 
-    private Text livesCounter;
     private Text levelField;
     private Text scoreField;
     private GameObject EndPanel;
@@ -156,7 +155,7 @@ public class VehicleController : MonoBehaviour
             isDestroyed = true;
             EventsManager.instance.VehicleDestroyed();
             numberOfLives--;
-            livesCounter.text = numberOfLives.ToString();
+            VehicleOptionsController.instance.SubsctractLife();
             if (numberOfLives > 0) StartCoroutine(WaitAndResume());
             else PlayerPrefs.SetInt("highScore", int.Parse(scoreField.text));
         }
@@ -178,7 +177,6 @@ public class VehicleController : MonoBehaviour
 
     void Start()
     {
-        livesCounter = GameObject.Find("UILivesCounter").GetComponent<Text>();
         levelField = GameObject.Find("PointField").GetComponent<Text>();
         scoreField = GameObject.Find("ScoreCounter").GetComponent<Text>();
         EndPanel = GameObject.Find("EndChapterPanel");
@@ -190,8 +188,8 @@ public class VehicleController : MonoBehaviour
         vehicleAcceleration = VehicleOptionsController.instance.GetVehicleAcceleration();
         defaultVehicleSpeed = VehicleOptionsController.instance.GetDefaultVehicleSpeed();
         maxSpeedChange = VehicleOptionsController.instance.GetMaxSpeedChange();
-        numberOfLives = VehicleOptionsController.instance.GetNumberOfLives();
         sidewaysRange = VehicleOptionsController.instance.GetSidewaysRange();
+        numberOfLives = VehicleOptionsController.instance.GetNumberOfLives();
         currentVehicleSpeed = defaultVehicleSpeed;
         maxVehicleSpeed = defaultVehicleSpeed * (1 + ((float)maxSpeedChange / 100));
         minVehicleSpeed = defaultVehicleSpeed * (1 - ((float)maxSpeedChange / 100));
@@ -206,7 +204,6 @@ public class VehicleController : MonoBehaviour
         lastLevelPositionCloseBackground = backgroundClose.transform.position.x;
         lastLevelPositionFarBackground = backgroundFar.transform.position.x;
         startingPosition = transform.position;
-        livesCounter.text = numberOfLives.ToString();
         isPaused = false;
 }
 

@@ -1201,6 +1201,9 @@ MonoBehaviour:
   - {fileID: 1785389542}
   - {fileID: 1756861380}
   - {fileID: 2000480230}
+  batteryPrefab: {fileID: 4496203412455000246, guid: 84921b3c750a64d48bbf8340b0746a68,
+    type: 3}
+  batteriesGroup: {fileID: 779778439}
 --- !u!4 &617984384
 Transform:
   m_ObjectHideFlags: 0
@@ -1562,6 +1565,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7653406028211244604, guid: d3fa5921f46e5d54a9448204140a7084,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -195
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718858420283154748, guid: d3fa5921f46e5d54a9448204140a7084,
+        type: 3}
+      propertyPath: m_Name
+      value: Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718858420283154748, guid: d3fa5921f46e5d54a9448204140a7084,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8324148375274117568, guid: d3fa5921f46e5d54a9448204140a7084,
         type: 3}
       propertyPath: m_Name
@@ -1848,6 +1866,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4403169386322204531, guid: f7ca97aac6b67e4409d1f185b8b587df,
     type: 3}
   m_PrefabInstance: {fileID: 158792953}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &779778439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4629104806046706044, guid: d3fa5921f46e5d54a9448204140a7084,
+    type: 3}
+  m_PrefabInstance: {fileID: 686811402}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &813329566
 PrefabInstance:

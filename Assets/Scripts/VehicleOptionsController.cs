@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VehicleOptionsController : MonoBehaviour
 {
@@ -34,8 +35,13 @@ public class VehicleOptionsController : MonoBehaviour
     [SerializeField] private static int numberOfLives = 4;
     [Tooltip("Bomb and enemy drop zone")]
     public Transform[] dropZones;
+    [Header("Technical:")]
+    [SerializeField] private Image batteryPrefab;
+    [SerializeField] private GameObject batteriesGroup;
 
     public static VehicleOptionsController instance;
+
+    private List<Image> batteriesList;
 
     private void Awake()
     {
@@ -50,8 +56,17 @@ public class VehicleOptionsController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Image battery;
+
         Random.InitState(System.Environment.TickCount);
         DontDestroyOnLoad(gameObject);
+        batteriesList = new List<Image>();
+        for (int i = 0; i < numberOfLives; i++)
+        {
+            battery = Instantiate(batteryPrefab, batteryPrefab.transform.position, Quaternion.identity).GetComponent<Image>();
+            battery.transform.SetParent(batteriesGroup.transform);
+            batteriesList.Add(battery);
+        }
     }
 
     public float GetCloseBackgroundSpeedFactor()
@@ -97,5 +112,17 @@ public class VehicleOptionsController : MonoBehaviour
     public int GetNumberOfLives()
     {
         return numberOfLives;
+    }
+
+    public void SubsctractLife()
+    {
+        for (int i = numberOfLives - 1; i >= 0; i--)
+        {
+            if (batteriesList[i].enabled)
+            {
+                batteriesList[i].enabled = false;
+                break;
+            }
+        }
     }
 }

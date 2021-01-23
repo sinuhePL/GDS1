@@ -56,6 +56,7 @@ public class VehicleController : MonoBehaviour
         if (transform.position.y <= 0.384f)
         {
             isJumping = false;
+            animator.SetBool("IsJumping", false);
             upwardSpeed = 0.0f;
         }
     }
@@ -72,6 +73,7 @@ public class VehicleController : MonoBehaviour
         if (Input.GetAxis("Fire1") > 0.0f && !isJumping && !isPaused)
         {
             isJumping = true;
+            animator.SetBool("IsJumping", true);
             upwardSpeed = jumpSpeed;
         }
         if (Input.GetAxis("Horizontal") > 0.5f && currentVehicleSpeed <= maxVehicleSpeed && !isPaused)

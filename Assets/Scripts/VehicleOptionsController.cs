@@ -118,9 +118,9 @@ public class VehicleOptionsController : MonoBehaviour
     {
         for (int i = numberOfLives - 1; i >= 0; i--)
         {
-            if (batteriesList[i].enabled)
+            if (batteriesList[i].gameObject.activeSelf)
             {
-                batteriesList[i].enabled = false;
+                batteriesList[i].gameObject.SetActive(false);
                 break;
             }
         }

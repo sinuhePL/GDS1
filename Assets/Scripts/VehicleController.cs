@@ -45,6 +45,7 @@ public class VehicleController : MonoBehaviour
     private float upwardPauseSpeed;
     private float currentVehiclePauseSpeed;
     private bool isPaused;
+    private Animator animator;
 
     private void moveVehicle()
     {
@@ -97,7 +98,12 @@ public class VehicleController : MonoBehaviour
         {
             isFiring = true;
             Instantiate(bulletUpPrefab, bulletUpSpawnPoint.position, bulletUpPrefab.transform.rotation);
-            if(lastForwardBullet == null || !lastForwardBullet.activeInHierarchy) lastForwardBullet = Instantiate(bulletForwardPrefab, bulletForwardSpawnPoint.position, bulletForwardPrefab.transform.rotation);
+            animator.SetTrigger("Fire_gun_top");
+            if (lastForwardBullet == null || !lastForwardBullet.activeInHierarchy)
+            {
+                lastForwardBullet = Instantiate(bulletForwardPrefab, bulletForwardSpawnPoint.position, bulletForwardPrefab.transform.rotation);
+                animator.SetTrigger("Fire_gun_front");
+            }
         }
         else if(Input.GetAxis("Fire2") == 0.0f && !isPaused) isFiring = false;
         if(Input.GetKeyDown("p"))
@@ -205,6 +211,7 @@ public class VehicleController : MonoBehaviour
         lastLevelPositionFarBackground = backgroundFar.transform.position.x;
         startingPosition = transform.position;
         isPaused = false;
+        animator = GetComponent<Animator>();
 }
 
     void Update()

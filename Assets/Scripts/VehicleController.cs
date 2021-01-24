@@ -16,7 +16,9 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private Transform bulletForwardSpawnPoint;
     [SerializeField] private Transform ground;
     [SerializeField] private Transform backgroundClose;
+    [SerializeField] private Transform backgroundMiddle;
     [SerializeField] private Transform backgroundFar;
+    [SerializeField] private Transform backgroundStars;
 
     private Text levelField;
     private Text scoreField;
@@ -32,11 +34,15 @@ public class VehicleController : MonoBehaviour
     private GameObject lastForwardBullet;
     private float lastLevelPositionGround;
     private float lastLevelPositionCloseBackground;
+    private float lastLevelPositionMiddleBackground;
     private float lastLevelPositionFarBackground;
+    private float lastLevelPositionStarsBackground;
     private Vector3 startingPosition;
     private float moonAccelerationConstant;
     private float closeBackgroundSpeedFactor;
+    private float middleBackgroundSpeedFactor;
     private float farBackgroundSpeedFactor;
+    private float starsBackgroundSpeedFactor;
     private float jumpSpeed;
     private float vehicleAcceleration;
     private float defaultVehicleSpeed;
@@ -66,7 +72,9 @@ public class VehicleController : MonoBehaviour
     {
         ground.transform.Translate(new Vector3(-Time.deltaTime * currentVehicleSpeed, 0.0f, 0.0f));
         backgroundClose.transform.Translate(new Vector3(Time.deltaTime * currentVehicleSpeed * closeBackgroundSpeedFactor, 0.0f, 0.0f));
+        backgroundMiddle.transform.Translate(new Vector3(Time.deltaTime * currentVehicleSpeed * middleBackgroundSpeedFactor, 0.0f, 0.0f));
         backgroundFar.transform.Translate(new Vector3(Time.deltaTime * currentVehicleSpeed * farBackgroundSpeedFactor, 0.0f, 0.0f));
+        backgroundStars.transform.Translate(new Vector3(Time.deltaTime * currentVehicleSpeed * starsBackgroundSpeedFactor, 0.0f, 0.0f));
     }
 
     private void manageInput()
@@ -150,7 +158,9 @@ public class VehicleController : MonoBehaviour
         currentVehicleSpeed = defaultVehicleSpeed;
         ground.transform.position = new Vector3(lastLevelPositionGround, ground.transform.position.y, ground.transform.position.z);
         backgroundClose.transform.position = new Vector3(lastLevelPositionCloseBackground, backgroundClose.transform.position.y, backgroundClose.transform.position.z);
+        backgroundMiddle.transform.position = new Vector3(lastLevelPositionMiddleBackground, backgroundMiddle.transform.position.y, backgroundMiddle.transform.position.z);
         backgroundFar.transform.position = new Vector3(lastLevelPositionFarBackground, backgroundFar.transform.position.y, backgroundFar.transform.position.z);
+        backgroundStars.transform.position = new Vector3(lastLevelPositionStarsBackground, backgroundStars.transform.position.y, backgroundStars.transform.position.z);
         transform.position = startingPosition;
     }
 
@@ -171,7 +181,9 @@ public class VehicleController : MonoBehaviour
             TextMeshPro myTextMeshPro;
             lastLevelPositionGround = ground.transform.position.x;
             lastLevelPositionCloseBackground = backgroundClose.transform.position.x;
+            lastLevelPositionMiddleBackground = backgroundMiddle.transform.position.x;
             lastLevelPositionFarBackground = backgroundFar.transform.position.x;
+            lastLevelPositionStarsBackground = backgroundStars.transform.position.x;
             myTextMeshPro = collision.gameObject.GetComponentInChildren<TextMeshPro>();
             levelField.text = myTextMeshPro.text;
             if (levelField.text == "E" || levelField.text == "J" || levelField.text == "O")
@@ -192,7 +204,9 @@ public class VehicleController : MonoBehaviour
         EndPanel.SetActive(false);
         moonAccelerationConstant = VehicleOptionsController.instance.GetMoonAccelerationConstant();
         closeBackgroundSpeedFactor = VehicleOptionsController.instance.GetCloseBackgroundSpeedFactor();
+        middleBackgroundSpeedFactor = VehicleOptionsController.instance.GetMiddleBackgroundSpeedFactor();
         farBackgroundSpeedFactor = VehicleOptionsController.instance.GetFarBackgroundSpeedFactor();
+        starsBackgroundSpeedFactor = VehicleOptionsController.instance.GetStarsBackgroundSpeedFactor();
         jumpSpeed = VehicleOptionsController.instance.GetJumpSpeed();
         vehicleAcceleration = VehicleOptionsController.instance.GetVehicleAcceleration();
         defaultVehicleSpeed = VehicleOptionsController.instance.GetDefaultVehicleSpeed();
@@ -211,7 +225,9 @@ public class VehicleController : MonoBehaviour
         lastForwardBullet = null;
         lastLevelPositionGround = ground.transform.position.x;
         lastLevelPositionCloseBackground = backgroundClose.transform.position.x;
+        lastLevelPositionMiddleBackground = backgroundMiddle.transform.position.x;
         lastLevelPositionFarBackground = backgroundFar.transform.position.x;
+        lastLevelPositionStarsBackground = backgroundStars.transform.position.x;
         startingPosition = transform.position;
         isPaused = false;
         animator = GetComponent<Animator>();

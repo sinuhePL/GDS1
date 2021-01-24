@@ -9,9 +9,15 @@ public class VehicleOptionsController : MonoBehaviour
     [Tooltip("Close background speed relative to vehicle speed")]
     [Range(-1.0f, 0.0f)]
     [SerializeField] private float closeBackgroundSpeedFactor = -0.2f;
+    [Tooltip("Middle background speed relative to vehicle speed")]
+    [Range(-1.0f, 0.0f)]
+    [SerializeField] private float middleBackgroundSpeedFactor = -0.2f;
     [Tooltip("Far background speed relative to vehicle speed")]
     [Range(-1.0f, 0.0f)]
     [SerializeField] private float farBackgroundSpeedFactor = -0.1f;
+    [Tooltip("Stars background speed relative to vehicle speed")]
+    [Range(-1.0f, 0.0f)]
+    [SerializeField] private float starsBackgroundSpeedFactor = -0.1f;
     [Tooltip("Initial upward speed when pressing [7]")]
     [Range(1.0f, 10.0f)]
     [SerializeField] private float jumpSpeed = 1.5f;
@@ -74,9 +80,19 @@ public class VehicleOptionsController : MonoBehaviour
         return closeBackgroundSpeedFactor;
     }
 
+    public float GetMiddleBackgroundSpeedFactor()
+    {
+        return middleBackgroundSpeedFactor;
+    }
+
     public float GetFarBackgroundSpeedFactor()
     {
         return farBackgroundSpeedFactor;
+    }
+
+    public float GetStarsBackgroundSpeedFactor()
+    {
+        return starsBackgroundSpeedFactor;
     }
 
     public float GetJumpSpeed()

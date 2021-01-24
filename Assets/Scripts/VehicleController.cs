@@ -56,11 +56,11 @@ public class VehicleController : MonoBehaviour
 
     private void moveVehicle()
     {
-        if (transform.position.y > 0.384f && !isPaused) upwardSpeed -= moonAccelerationConstant * Time.deltaTime;
+        if (transform.position.y > 0.2f && !isPaused) upwardSpeed -= moonAccelerationConstant * Time.deltaTime;
         transform.Translate(new Vector3(0.0f, Time.deltaTime * upwardSpeed, 0.0f));
         wheel1.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * -wheelSpeedMultiplier));
         wheel2.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * wheelSpeedMultiplier));
-        if (transform.position.y <= 0.384f)
+        if (transform.position.y <= 0.2f)
         {
             isJumping = false;
             animator.SetBool("IsJumping", false);

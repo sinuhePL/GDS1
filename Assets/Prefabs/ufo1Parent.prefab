@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74967d4c8166444689518c5c960e569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationStartPosition: {x: -3, y: 6, z: 0}
+  animationStartPosition: {x: -2, y: 6, z: 0}
   circleChangeSpeed: 1.53
   moveSpeed: 10
   isRotating: 0

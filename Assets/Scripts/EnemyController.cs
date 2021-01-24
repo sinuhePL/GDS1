@@ -35,6 +35,11 @@ public class EnemyController : MonoBehaviour
         GetComponentInParent<UfoParentController>().ChangeCircleLevel();
     }
 
+    protected void EndMove()
+    {
+        GetComponentInParent<UfoParentController>().EndMove();
+    }
+
     public void AddMySpawner(GameObject spawner)
     {
         mySpawner = spawner;

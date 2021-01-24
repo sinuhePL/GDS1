@@ -7,7 +7,7 @@ public class DestroyMe : MonoBehaviour
 {
     [Header("Technical:")]
     [SerializeField]
-    private ParticleSystem destructionBlastPrefab;
+    private BlastController destructionBlastPrefab;
     [Header("For designers:")]
     [Tooltip("Score for destroying.")]
     [SerializeField] private int score = 0;
@@ -22,9 +22,7 @@ public class DestroyMe : MonoBehaviour
         {
             if (destructionBlastPrefab != null)
             {
-                ParticleSystem myParticleSystem;
-                myParticleSystem = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
-                if (!myParticleSystem.IsAlive()) Destroy(myParticleSystem.gameObject);
+                Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
             }
             if (collision.gameObject.tag == "Bullet")
             {

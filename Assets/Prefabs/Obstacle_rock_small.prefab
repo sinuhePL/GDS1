@@ -62,7 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332a3c8a850eb0b4eab7577c0e620345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionBlastPrefab: {fileID: 0}
+  destructionBlastPrefab: {fileID: 4504693794659268951, guid: 0d35022fbafe3294e8c0aea321927221,
+    type: 3}
   score: 100
 --- !u!1 &5330549902129284456
 GameObject:

@@ -36,6 +36,7 @@ public class UfoParentController : MonoBehaviour
     private bool isLast;
     private float pausedMoveSpeed;
     private bool isPaused;
+    private bool isAllowedToEnd;
 
     private void Pause()
     {
@@ -98,11 +99,14 @@ public class UfoParentController : MonoBehaviour
 
     public void EndMove()
     {
-        Vector3 tempDestination;
-        if (myChildAnimator != null) myChildAnimator.enabled = false;
-        if(isLast) tempDestination = VehicleOptionsController.instance.dropZones[Random.Range(0, VehicleOptionsController.instance.dropZones.Length)].position;
-        else tempDestination = new Vector3(20.0f, transform.position.y, 0.0f);
-        StartCoroutine(MoveToDestination(tempDestination));
+        if (isAllowedToEnd)
+        {
+            Vector3 tempDestination;
+            if (myChildAnimator != null) myChildAnimator.enabled = false;
+            if (isLast) tempDestination = VehicleOptionsController.instance.dropZones[Random.Range(0, VehicleOptionsController.instance.dropZones.Length)].position;
+            else tempDestination = new Vector3(20.0f, transform.position.y, 0.0f);
+            StartCoroutine(MoveToDestination(tempDestination));
+        }
     }
 
     public void ChangeCircleLevel()
@@ -153,6 +157,7 @@ public class UfoParentController : MonoBehaviour
         circleLevel = 1;
         flyingTime = 0.0f;
         isPaused = false;
+        isAllowedToEnd = false;
         EventsManager.instance.OnPausePressed += Pause;
     }
 
@@ -160,9 +165,9 @@ public class UfoParentController : MonoBehaviour
     void Update()
     {
         flyingTime += Time.deltaTime;
-        if(flyingTime > 10.0f && myChildAnimator != null && myChildAnimator.enabled == true)
+        if(flyingTime > 10.0f && !isAllowedToEnd)
         {
-            EndMove();
+            isAllowedToEnd = true;
         }
     }
 

@@ -12,12 +12,12 @@ public class BombController : MonoBehaviour
     [Range(2.0f, 8.0f)]
     [SerializeField] private float moonAccelerationConstant = 3.0f;
 
-    private float speed = 0.0f;
-    private Vector3 destination;
-    private float pausedSpeed;
-    private bool isPaused;
+    protected float speed = 0.0f;
+    protected Vector3 destination;
+    protected float pausedSpeed;
+    protected bool isPaused;
 
-    private void Pause()
+    protected void Pause()
     {
         if (isPaused)
         {
@@ -48,7 +48,7 @@ public class BombController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         destination = VehicleOptionsController.instance.dropZones[Random.Range(0, VehicleOptionsController.instance.dropZones.Length)].position;
         isPaused = false;
@@ -68,7 +68,7 @@ public class BombController : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    protected void OnDestroy()
     {
         EventsManager.instance.OnPausePressed -= Pause;
     }

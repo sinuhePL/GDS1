@@ -9,7 +9,7 @@ public class BulletForwardController : MonoBehaviour
     private BlastController destructionBlastPrefab;
     [Header("For designers:")]
     [Tooltip("Bullet speed")]
-    [Range(1.0f, 8.0f)]
+    [Range(1.0f, 10.0f)]
     [SerializeField] private float bulletSpeed = 4.0f;
     [Tooltip("Bullet range")]
     [Range(1.0f, 4.0f)]

@@ -300,7 +300,7 @@ MonoBehaviour:
   bombPrefab: {fileID: 1657450998703068418, guid: 90f47f581d4031e48b98dd8319bcbce5,
     type: 3}
   bombSpawnPoint: {fileID: 5478534339265849666}
-  bombProbability: 0.334
+  bombProbability: 0.325
   circleChangeProbability: 0.5
 --- !u!1 &5155396041145187564
 GameObject:

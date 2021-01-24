@@ -14,7 +14,7 @@ public class HoleBombController : BombController
 
         if (collision.gameObject.tag == "Ground")
         {
-            myHole = Instantiate(holePrefab, transform.position + new Vector3(0.0f, -0.3f, 0.0f), holePrefab.transform.rotation);
+            myHole = Instantiate(holePrefab, transform.position + new Vector3(0.0f, 0.4f, 0.0f), holePrefab.transform.rotation);
             myHole.transform.SetParent(collision.gameObject.transform);
         }
         base.OnTriggerEnter2D(collision);

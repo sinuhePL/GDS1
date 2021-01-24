@@ -29,7 +29,7 @@ public class EndChapterController : MonoBehaviour
             timeField.text = (int.Parse(timeField.text) + 1).ToString("000");
             if (!bonusField.enabled) bonusField.enabled = true;
             bonusField.text = (++additionalPoints*100).ToString("000");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
         }
         yield return new WaitForSeconds(5.0f);
         if (level.text == "E")

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2465928717670119125}
   - component: {fileID: 1777237122337524130}
   m_Layer: 0
-  m_Name: ufo2Parent
+  m_Name: ufo3Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74967d4c8166444689518c5c960e569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationStartPosition: {x: -3, y: 5.5, z: 0}
+  animationStartPosition: {x: -2, y: 5.5, z: 0}
   circleChangeSpeed: 1.18
   moveSpeed: 10
   isRotating: 1

@@ -4,32 +4,52 @@ using UnityEngine;
 
 public class BlastController : MonoBehaviour
 {
-
     private bool isPaused;
-    private ParticleSystem myParticleSystem;
+    private ParticleSystem[] myParticleSystems;
 
     private void Pause()
     {
         if (isPaused)
         {
-            myParticleSystem.Play();
+            foreach (ParticleSystem particleSystem in myParticleSystems)
+                particleSystem.Play();
         }
         else
         {
-            myParticleSystem.Pause();
+            foreach (ParticleSystem particleSystem in myParticleSystems)
+                particleSystem.Pause();
         }
         isPaused = !isPaused;
     }
+
+    private IEnumerator RunParticleLifeCheck()
+    {
+        if (CheckIfParticleSystemFinished())
+            Destroy(gameObject);
+        else
+            yield return new WaitForSeconds(3);
+    }
+
+    private bool CheckIfParticleSystemFinished()
+    {
+        foreach (ParticleSystem particleSystem in myParticleSystems)
+            if (particleSystem.IsAlive()) return false;
+
+        return true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        isPaused = false;
-        myParticleSystem = GetComponent<ParticleSystem>();
+        isPaused = false;        
+        myParticleSystems = GetComponentsInChildren<ParticleSystem>();
+
+        StartCoroutine("RunParticleLifeCheck");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

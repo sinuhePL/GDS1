@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332a3c8a850eb0b4eab7577c0e620345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionBlastPrefab: {fileID: 8651647781833780237, guid: 81d777fc148768c488f53f8beb41fa38,
+  destructionBlastPrefab: {fileID: 8443357761221149102, guid: 81d777fc148768c488f53f8beb41fa38,
     type: 3}
   score: 100
 --- !u!114 &2600185692477418146

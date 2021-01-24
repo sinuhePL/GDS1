@@ -10044,6 +10044,21 @@ PrefabInstance:
       objectReference: {fileID: 1583323266}
     - target: {fileID: 7815852522687089983, guid: 6d41fc3c578c6b74c96ccff06fd65ec1,
         type: 3}
+      propertyPath: jumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 20a7201c485184946880dbd19e723d13, type: 3}
+    - target: {fileID: 7815852522687089983, guid: 6d41fc3c578c6b74c96ccff06fd65ec1,
+        type: 3}
+      propertyPath: landClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a1512e6d7014a042bcb15404f8c8d22, type: 3}
+    - target: {fileID: 7815852522687089983, guid: 6d41fc3c578c6b74c96ccff06fd65ec1,
+        type: 3}
+      propertyPath: shootUpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d28370fcb6cd934ba45d4f7ba4c810a, type: 3}
+    - target: {fileID: 7815852522687089983, guid: 6d41fc3c578c6b74c96ccff06fd65ec1,
+        type: 3}
       propertyPath: backgroundFar
       value: 
       objectReference: {fileID: 2001341685}
@@ -10062,6 +10077,11 @@ PrefabInstance:
       propertyPath: backgroundMiddle
       value: 
       objectReference: {fileID: 1137089630}
+    - target: {fileID: 7815852522687089983, guid: 6d41fc3c578c6b74c96ccff06fd65ec1,
+        type: 3}
+      propertyPath: shootForwardClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e3935b5a1efd11e47a39485829e032d4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d41fc3c578c6b74c96ccff06fd65ec1, type: 3}
 --- !u!1001 &1498457894

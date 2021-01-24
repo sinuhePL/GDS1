@@ -8,11 +8,13 @@ public class DestroyMe : MonoBehaviour
     [Header("Technical:")]
     [SerializeField]
     private BlastController destructionBlastPrefab;
+    [SerializeField] private bool isRespawned = false;
     [Header("For designers:")]
     [Tooltip("Score for destroying.")]
     [SerializeField] private int score = 0;
 
     private Animator animator;
+    private AudioSource myAudioSource;
 
     protected Text scoreField;
 
@@ -20,6 +22,10 @@ public class DestroyMe : MonoBehaviour
     {
         if(collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Vehicle")
         {
+            if(isRespawned)
+            {
+                VehicleOptionsController.instance.AddDestroyedObstacle(Instantiate(gameObject, transform.parent));
+            }
             if (destructionBlastPrefab != null)
             {
                 Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);

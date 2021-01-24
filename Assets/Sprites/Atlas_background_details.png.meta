@@ -1,0 +1,728 @@
+fileFormatVersion: 2
+guid: 276c553452a1d374c8869f8330988a65
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5489202981268197946
+    second: Coral_02_A_01
+  - first:
+      213: 2895024160596747459
+    second: Coral_02_A_02
+  - first:
+      213: 439743454854836112
+    second: Coral_02_A_03
+  - first:
+      213: -3856559314930848993
+    second: Coral_02_B_01
+  - first:
+      213: -947470453959905921
+    second: Coral_02_B_02
+  - first:
+      213: -3006175494006676737
+    second: Coral_02_B_03
+  - first:
+      213: 1396639843751000554
+    second: Coral_03_A_01
+  - first:
+      213: 4551623935893873295
+    second: Coral_03_A_02
+  - first:
+      213: 89131098341277150
+    second: Coral_03_A_03
+  - first:
+      213: -5784915500998196159
+    second: Coral_03_A_04
+  - first:
+      213: 4163860043699874417
+    second: Coral_03_A_05
+  - first:
+      213: -2352851037099424989
+    second: Coral_03_A_06
+  - first:
+      213: -954947494848490977
+    second: Coral_02_A_04
+  - first:
+      213: -8970598870394566775
+    second: Coral_02_B_04
+  - first:
+      213: -1414732473169357113
+    second: Coral_03_B_02
+  - first:
+      213: -9147411334178526880
+    second: Coral_03_B_04
+  - first:
+      213: -5632095090998529855
+    second: Coral_03_B_05
+  - first:
+      213: -8199261803875104990
+    second: Coral_02_A_05
+  - first:
+      213: -8394560583204777765
+    second: Coral_02_A_07
+  - first:
+      213: -2675282350049809030
+    second: Coral_02_B_05
+  - first:
+      213: 3893611386979189583
+    second: Coral_02_B_07
+  - first:
+      213: 6008973079317236046
+    second: Coral_03_B_01
+  - first:
+      213: -5009177102586942538
+    second: Coral_03_B_03
+  - first:
+      213: -9204174246943639607
+    second: Coral_02_A_06
+  - first:
+      213: 3702603343567346146
+    second: Coral_02_B_06
+  - first:
+      213: -1741933784377886779
+    second: Coral_03_B_06
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Coral_02_A_01
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1160
+        width: 463
+        height: 865
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cd6e79b8fe62d3b0800000000000000
+      internalID: -5489202981268197946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_A_02
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1356
+        width: 442
+        height: 652
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c4ea84b2213d2820800000000000000
+      internalID: 2895024160596747459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_A_03
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 1667
+        width: 190
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09fece2a7584a1600800000000000000
+      internalID: 439743454854836112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_B_01
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 1167
+        width: 463
+        height: 865
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1ba25a6cbfba7ac0800000000000000
+      internalID: -3856559314930848993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_B_02
+      rect:
+        serializedVersion: 2
+        x: 2119
+        y: 1356
+        width: 442
+        height: 652
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7daa8c54a8e9d2f0800000000000000
+      internalID: -947470453959905921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_B_03
+      rect:
+        serializedVersion: 2
+        x: 2609
+        y: 1671
+        width: 190
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff26f3bc05be746d0800000000000000
+      internalID: -3006175494006676737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_03_A_01
+      rect:
+        serializedVersion: 2
+        x: 2911
+        y: 1384
+        width: 129
+        height: 638
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae97fe5c98cd16310800000000000000
+      internalID: 1396639843751000554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_03_A_02
+      rect:
+        serializedVersion: 2
+        x: 3081
+        y: 1345
+        width: 111
+        height: 685
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f82ae1aaadd9a2f30800000000000000
+      internalID: 4551623935893873295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_03_A_03
+      rect:
+        serializedVersion: 2
+        x: 3240
+        y: 1360
+        width: 118
+        height: 639
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edd721ff248ac3100800000000000000
+      internalID: 89131098341277150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_03_A_04
+      rect:
+        serializedVersion: 2
+        x: 3420
+        y: 1352
+        width: 108
+        height: 691
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1440a5b600ad7bfa0800000000000000
+      internalID: -5784915500998196159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_03_A_05
+      rect:
+        serializedVersion: 2
+        x: 3580
+        y: 1344
+        width: 136
+        height: 683
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17a6c2f06a009c930800000000000000
+      internalID: 4163860043699874417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_03_A_06
+      rect:
+        serializedVersion: 2
+        x: 3811
+        y: 1366
+        width: 170
+        height: 586
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 323874c927ef85fd0800000000000000
+      internalID: -2352851037099424989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_A_04
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 1304
+        width: 214
+        height: 284
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f12186e10585fb2f0800000000000000
+      internalID: -954947494848490977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_B_04
+      rect:
+        serializedVersion: 2
+        x: 2628
+        y: 1304
+        width: 214
+        height: 284
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9878c9b0bd7028380800000000000000
+      internalID: -8970598870394566775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_03_B_02
+      rect:
+        serializedVersion: 2
+        x: 3401
+        y: 639
+        width: 112
+        height: 685
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c6d78caf4cdd5ce0800000000000000
+      internalID: -1414732473169357113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_03_B_04
+      rect:
+        serializedVersion: 2
+        x: 3740
+        y: 630
+        width: 109
+        height: 691
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06928eb4bdddd0180800000000000000
+      internalID: -9147411334178526880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_03_B_05
+      rect:
+        serializedVersion: 2
+        x: 3900
+        y: 628
+        width: 137
+        height: 683
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c0bfc7da57c6d1b0800000000000000
+      internalID: -5632095090998529855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_A_05
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 590
+        width: 655
+        height: 522
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2278897b4de563e80800000000000000
+      internalID: -8199261803875104990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_A_07
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 64
+        width: 777
+        height: 1145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd0559830a7808b80800000000000000
+      internalID: -8394560583204777765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_B_05
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 584
+        width: 655
+        height: 522
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7da86b70ec7fdad0800000000000000
+      internalID: -2675282350049809030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_B_07
+      rect:
+        serializedVersion: 2
+        x: 2279
+        y: 56
+        width: 776
+        height: 1145
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f438f4e5de2e80630800000000000000
+      internalID: 3893611386979189583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_03_B_01
+      rect:
+        serializedVersion: 2
+        x: 3232
+        y: 663
+        width: 129
+        height: 638
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e49c691cd29246350800000000000000
+      internalID: 6008973079317236046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_03_B_03
+      rect:
+        serializedVersion: 2
+        x: 3562
+        y: 647
+        width: 119
+        height: 639
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bbe84707f3db7ab0800000000000000
+      internalID: -5009177102586942538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_A_06
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 120
+        width: 412
+        height: 371
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c73028c944344080800000000000000
+      internalID: -9204174246943639607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_02_B_06
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 125
+        width: 412
+        height: 371
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e9518daf1a426330800000000000000
+      internalID: 3702603343567346146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coral_03_B_06
+      rect:
+        serializedVersion: 2
+        x: 3227
+        y: 6
+        width: 170
+        height: 586
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c777e7c37863d7e0800000000000000
+      internalID: -1741933784377886779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

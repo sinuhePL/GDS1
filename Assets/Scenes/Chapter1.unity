@@ -7822,7 +7822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee95c553b12e8a4bbf97722b8df4a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4833278693538922405, guid: b7f5ffd71c744d74e92c10e6844e64b5,
+  enemyPrefab: {fileID: 1732609481134167038, guid: a1d1418a684529f41a4f942f184e23fc,
     type: 3}
   scorePrefab: {fileID: 6188771287858638180, guid: d1c33642bd86c3a4cb0c0afe3849ed43,
     type: 3}

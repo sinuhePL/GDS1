@@ -6,7 +6,7 @@ public class BulletForwardController : MonoBehaviour
 {
     [Header("Technical:")]
     [SerializeField]
-    private ParticleSystem destructionBlastPrefab;
+    private BlastController destructionBlastPrefab;
     [Header("For designers:")]
     [Tooltip("Bullet speed")]
     [Range(1.0f, 8.0f)]
@@ -58,13 +58,12 @@ public class BulletForwardController : MonoBehaviour
 
     private void OnDestroy()
     {
-        ParticleSystem myParticleSystem;
+        BlastController blastController;
         //ParticleSystem.MainModule psmain;
 
-        myParticleSystem = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
+        blastController = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
         //psmain = myParticleSystem.main;
         //psmain.startLifetime = 0.2f;
-        if (!myParticleSystem.IsAlive()) Destroy(myParticleSystem.gameObject);
         EventsManager.instance.OnPausePressed -= Pause;
     }
 }

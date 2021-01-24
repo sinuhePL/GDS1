@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e124add9c7cb524988ed2ecd85130d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionBlastPrefab: {fileID: 7424613578203421207, guid: 0d35022fbafe3294e8c0aea321927221,
+  destructionBlastPrefab: {fileID: 4504693794659268951, guid: 0d35022fbafe3294e8c0aea321927221,
     type: 3}
   bulletSpeed: 8
   bulletRange: 3.5

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3521922f22afa75438b33db439db3c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionBlastPrefab: {fileID: 1324263997055639151, guid: 0a63406f816f2874582a926a0aa76282,
+  destructionBlastPrefab: {fileID: 4504693794659268951, guid: 0d35022fbafe3294e8c0aea321927221,
     type: 3}
   moonAccelerationConstant: 4.67
 --- !u!70 &4293223403677179214

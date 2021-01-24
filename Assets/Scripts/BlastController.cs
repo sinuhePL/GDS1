@@ -24,10 +24,10 @@ public class BlastController : MonoBehaviour
 
     private IEnumerator RunParticleLifeCheck()
     {
-        if (CheckIfParticleSystemFinished())
-            Destroy(gameObject);
-        else
-            yield return new WaitForSeconds(3);
+        while (!CheckIfParticleSystemFinished())
+            yield return new WaitForSeconds(2);
+
+        Destroy(gameObject);
     }
 
     private bool CheckIfParticleSystemFinished()

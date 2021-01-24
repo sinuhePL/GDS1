@@ -6,7 +6,7 @@ public class BombController : MonoBehaviour
 {
     [Header("Technical:")]
     [SerializeField]
-    private ParticleSystem destructionBlastPrefab;
+    private BlastController destructionBlastPrefab;
     [Header("For designers:")]
     [Tooltip("Moon gravity constant.")]
     [Range(2.0f, 8.0f)]
@@ -33,7 +33,7 @@ public class BombController : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        ParticleSystem myParticleSystem;
+        BlastController blastController;
 
         if (collision.gameObject.tag == "Bullet")
         {
@@ -42,8 +42,7 @@ public class BombController : MonoBehaviour
         }
         if(collision.gameObject.tag == "Ground")
         {
-            myParticleSystem = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
-            myParticleSystem.transform.SetParent(collision.gameObject.transform);
+            blastController = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
             Destroy(gameObject);
         }
     }

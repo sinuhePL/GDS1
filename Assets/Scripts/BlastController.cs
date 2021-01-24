@@ -34,7 +34,7 @@ public class BlastController : MonoBehaviour
     private bool CheckIfParticleSystemFinished()
     {
         foreach (ParticleSystem particleSystem in myParticleSystems)
-            if (particleSystem.IsAlive()) return false;
+            if (particleSystem != null && particleSystem.IsAlive()) return false;
 
         return true;
     }

@@ -14,6 +14,7 @@ public class DestroyMe : MonoBehaviour
     [SerializeField] private int score = 0;
 
     private Animator animator;
+    private AudioSource myAudioSource;
 
     protected Text scoreField;
 

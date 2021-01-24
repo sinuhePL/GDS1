@@ -19,6 +19,10 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private Transform backgroundMiddle;
     [SerializeField] private Transform backgroundFar;
     [SerializeField] private Transform backgroundStars;
+    [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip landClip;
+    [SerializeField] private AudioClip shootUpClip;
+    [SerializeField] private AudioClip shootForwardClip;
 
     private Text levelField;
     private Text scoreField;
@@ -53,6 +57,10 @@ public class VehicleController : MonoBehaviour
     private float currentVehiclePauseSpeed;
     private bool isPaused;
     private Animator animator;
+    private AudioSource shootUpAudioSource;
+    private AudioSource shootForwardAudioSource;
+    private AudioSource jumpAudioSource;
+    private AudioSource landAudioSource;
 
     private void moveVehicle()
     {
@@ -62,6 +70,7 @@ public class VehicleController : MonoBehaviour
         wheel2.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * currentVehicleSpeed * wheelSpeedMultiplier));
         if (transform.position.y <= 0.2f)
         {
+            if(isJumping) landAudioSource.PlayOneShot(landClip);
             isJumping = false;
             animator.SetBool("IsJumping", false);
             upwardSpeed = 0.0f;
@@ -84,6 +93,7 @@ public class VehicleController : MonoBehaviour
             isJumping = true;
             animator.SetBool("IsJumping", true);
             upwardSpeed = jumpSpeed;
+            jumpAudioSource.PlayOneShot(jumpClip);
         }
         if (Input.GetAxis("Horizontal") > 0.5f && currentVehicleSpeed <= maxVehicleSpeed && !isPaused)
         {
@@ -109,9 +119,11 @@ public class VehicleController : MonoBehaviour
         {
             isFiring = true;
             Instantiate(bulletUpPrefab, bulletUpSpawnPoint.position, bulletUpPrefab.transform.rotation);
+            shootUpAudioSource.PlayOneShot(shootUpClip);
             animator.SetTrigger("Fire_gun_top");
             if (lastForwardBullet == null || !lastForwardBullet.activeInHierarchy)
             {
+                shootForwardAudioSource.PlayOneShot(shootForwardClip);
                 lastForwardBullet = Instantiate(bulletForwardPrefab, bulletForwardSpawnPoint.position, bulletForwardPrefab.transform.rotation);
                 animator.SetTrigger("Fire_gun_front");
             }
@@ -153,7 +165,7 @@ public class VehicleController : MonoBehaviour
 
     private IEnumerator WaitAndResume()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(3.0f);
         isDestroyed = false;
         VehicleOptionsController.instance.RespawnObstacles();
         currentVehicleSpeed = defaultVehicleSpeed;
@@ -196,6 +208,14 @@ public class VehicleController : MonoBehaviour
                 EndPanel.GetComponent<EndChapterController>().ShowYourself();
             }
         }
+    }
+
+    private void Awake()
+    {
+        shootUpAudioSource = gameObject.AddComponent<AudioSource>();
+        shootForwardAudioSource = gameObject.AddComponent<AudioSource>();
+        jumpAudioSource = gameObject.AddComponent<AudioSource>();
+        landAudioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Start()

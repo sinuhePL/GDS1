@@ -189,6 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructionBlastPrefab: {fileID: 8443357761221149102, guid: 81d777fc148768c488f53f8beb41fa38,
     type: 3}
+  isRespawned: 0
+  deathAudioClip: {fileID: 8300000, guid: 0ebc797749d60bc44a308ddf03d01cb6, type: 3}
   score: 100
 --- !u!114 &8131715319621276661
 MonoBehaviour:

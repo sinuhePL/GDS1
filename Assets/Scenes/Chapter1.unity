@@ -1234,7 +1234,7 @@ MonoBehaviour:
   - {fileID: 45762179}
   - {fileID: 2061866009}
   - {fileID: 558148225}
-  waveScore: 400
+  waveScore: 500
 --- !u!61 &125274271
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1744,7 +1744,7 @@ PrefabInstance:
     - target: {fileID: 949231023092077055, guid: 42527cb3aca9e964db6cb0a3f058e01f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 340
+      value: 335.45
       objectReference: {fileID: 0}
     - target: {fileID: 949231023092077055, guid: 42527cb3aca9e964db6cb0a3f058e01f,
         type: 3}
@@ -3924,7 +3924,7 @@ PrefabInstance:
     - target: {fileID: 949231023092077055, guid: 42527cb3aca9e964db6cb0a3f058e01f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 160
+      value: 155.5
       objectReference: {fileID: 0}
     - target: {fileID: 949231023092077055, guid: 42527cb3aca9e964db6cb0a3f058e01f,
         type: 3}
@@ -6572,7 +6572,7 @@ PrefabInstance:
     - target: {fileID: 949231023092077055, guid: 42527cb3aca9e964db6cb0a3f058e01f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 370
+      value: 365.49
       objectReference: {fileID: 0}
     - target: {fileID: 949231023092077055, guid: 42527cb3aca9e964db6cb0a3f058e01f,
         type: 3}
@@ -12792,7 +12792,7 @@ PrefabInstance:
     - target: {fileID: 949231023092077055, guid: 42527cb3aca9e964db6cb0a3f058e01f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.88
+      value: 65.42
       objectReference: {fileID: 0}
     - target: {fileID: 949231023092077055, guid: 42527cb3aca9e964db6cb0a3f058e01f,
         type: 3}

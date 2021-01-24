@@ -20,6 +20,12 @@ TextureImporter:
   - first:
       213: -3415991248820587047
     second: Ground
+  - first:
+      213: 586302776649216159
+    second: Atlas_backgrounds_star_large
+  - first:
+      213: 6025740228238555002
+    second: Atlas_backgrounds_star_small
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -226,6 +232,48 @@ TextureImporter:
       bones: []
       spriteID: 9d5b432de06f790d0800000000000000
       internalID: -3415991248820587047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_backgrounds_star_large
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 3840
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 1, z: 1, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f90700dd447f22800800000000000000
+      internalID: 586302776649216159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atlas_backgrounds_star_small
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 3968
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 1, z: 1, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77b0f4dfcabf9350800000000000000
+      internalID: 6025740228238555002
       vertices: []
       indices: 
       edges: []

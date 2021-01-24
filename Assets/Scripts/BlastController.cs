@@ -27,6 +27,7 @@ public class BlastController : MonoBehaviour
         while (!CheckIfParticleSystemFinished())
             yield return new WaitForSeconds(2);
 
+        StopAllCoroutines();
         Destroy(gameObject);
     }
 

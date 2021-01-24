@@ -155,6 +155,7 @@ public class VehicleController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         isDestroyed = false;
+        VehicleOptionsController.instance.RespawnObstacles();
         currentVehicleSpeed = defaultVehicleSpeed;
         ground.transform.position = new Vector3(lastLevelPositionGround, ground.transform.position.y, ground.transform.position.z);
         backgroundClose.transform.position = new Vector3(lastLevelPositionCloseBackground, backgroundClose.transform.position.y, backgroundClose.transform.position.z);
@@ -179,6 +180,7 @@ public class VehicleController : MonoBehaviour
         else if (collision.gameObject.tag == "Level")
         {
             TextMeshPro myTextMeshPro;
+            VehicleOptionsController.instance.ClearObstacleList();
             lastLevelPositionGround = ground.transform.position.x;
             lastLevelPositionCloseBackground = backgroundClose.transform.position.x;
             lastLevelPositionMiddleBackground = backgroundMiddle.transform.position.x;

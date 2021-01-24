@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructionBlastPrefab: {fileID: 4504693794659268951, guid: 0d35022fbafe3294e8c0aea321927221,
     type: 3}
+  isRespawned: 1
   score: 100
 --- !u!1 &5330549902129284456
 GameObject:

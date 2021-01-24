@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class VehicleOptionsController : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class VehicleOptionsController : MonoBehaviour
     public static VehicleOptionsController instance;
 
     private List<Image> batteriesList;
+    private List<GameObject> destroyedObstacles;
 
     private void Awake()
     {
@@ -57,6 +59,21 @@ public class VehicleOptionsController : MonoBehaviour
         {
             Destroy(this);
         }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        destroyedObstacles = new List<GameObject>();
     }
 
     // Start is called before the first frame update
@@ -73,6 +90,26 @@ public class VehicleOptionsController : MonoBehaviour
             battery.transform.SetParent(batteriesGroup.transform);
             batteriesList.Add(battery);
         }
+    }
+
+    public void AddDestroyedObstacle(GameObject obstacle)
+    {
+        obstacle.SetActive(false);
+        destroyedObstacles.Add(obstacle);
+    }
+
+    public void ClearObstacleList()
+    {
+        destroyedObstacles.Clear();
+    }
+
+    public void RespawnObstacles()
+    {
+        foreach(GameObject g in destroyedObstacles)
+        {
+            g.SetActive(true);
+        }
+        destroyedObstacles.Clear();
     }
 
     public float GetCloseBackgroundSpeedFactor()

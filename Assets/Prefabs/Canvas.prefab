@@ -1728,6 +1728,7 @@ MonoBehaviour:
   noBonusText: {fileID: 8324148376088327805}
   bonusField: {fileID: 8324148376849659580}
   brokenRecordText: {fileID: 8324148376761285231}
+  endChapterClip: {fileID: 8300000, guid: a13eb2a834c2d5346955f8d1e08b4da7, type: 3}
 --- !u!1 &8324148376088327803
 GameObject:
   m_ObjectHideFlags: 0

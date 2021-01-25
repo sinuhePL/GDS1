@@ -6,6 +6,7 @@ public class BlastController : MonoBehaviour
 {
     private bool isPaused;
     private ParticleSystem[] myParticleSystems;
+    private AudioSource myAudioSource;
 
     private void Pause()
     {
@@ -37,6 +38,16 @@ public class BlastController : MonoBehaviour
             if (particleSystem != null && particleSystem.IsAlive()) return false;
 
         return true;
+    }
+
+    public void PlaySound(AudioClip myClip)
+    {
+        myAudioSource.PlayOneShot(myClip);
+    }
+
+    private void Awake()
+    {
+        myAudioSource = gameObject.AddComponent<AudioSource>();
     }
 
     // Start is called before the first frame update

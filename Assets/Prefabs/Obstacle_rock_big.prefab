@@ -65,6 +65,7 @@ MonoBehaviour:
   destructionBlastPrefab: {fileID: 4504693794659268951, guid: 0d35022fbafe3294e8c0aea321927221,
     type: 3}
   isRespawned: 1
+  deathSound: {fileID: 8300000, guid: 1e4805cbb9a98ea4cb2460ac78c50df9, type: 3}
   score: 100
 --- !u!1 &8252737841165545108
 GameObject:

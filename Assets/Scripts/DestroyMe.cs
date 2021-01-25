@@ -9,6 +9,7 @@ public class DestroyMe : MonoBehaviour
     [SerializeField]
     private BlastController destructionBlastPrefab;
     [SerializeField] private bool isRespawned = false;
+    [SerializeField] private AudioClip deathSound;
     [Header("For designers:")]
     [Tooltip("Score for destroying.")]
     [SerializeField] private int score = 0;
@@ -20,6 +21,7 @@ public class DestroyMe : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        BlastController bc;
         if(collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Vehicle")
         {
             if(isRespawned)
@@ -28,7 +30,8 @@ public class DestroyMe : MonoBehaviour
             }
             if (destructionBlastPrefab != null)
             {
-                Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
+                bc = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
+                if(deathSound != null) bc.PlaySound(deathSound);
             }
             if (collision.gameObject.tag == "Bullet")
             {

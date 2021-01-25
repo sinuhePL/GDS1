@@ -27,6 +27,7 @@ public class VehicleController : MonoBehaviour
     private Text levelField;
     private Text scoreField;
     private GameObject EndPanel;
+    private GameObject ContinuePanel;
     private float upwardSpeed = 0.0f;
     private bool isJumping;
     private bool isFiring;
@@ -163,9 +164,15 @@ public class VehicleController : MonoBehaviour
         return maxSpeedChange;
     }
 
-    private IEnumerator WaitAndResume()
+    public void ReSpawn()
     {
-        yield return new WaitForSeconds(3.0f);
+        numberOfLives = VehicleOptionsController.instance.GetNumberOfLives();
+        VehicleOptionsController.instance.RestoreLife();
+        Restore();
+    }
+
+    private void Restore()
+    {
         isDestroyed = false;
         VehicleOptionsController.instance.RespawnObstacles();
         currentVehicleSpeed = defaultVehicleSpeed;
@@ -175,6 +182,12 @@ public class VehicleController : MonoBehaviour
         backgroundFar.transform.position = new Vector3(lastLevelPositionFarBackground, backgroundFar.transform.position.y, backgroundFar.transform.position.z);
         backgroundStars.transform.position = new Vector3(lastLevelPositionStarsBackground, backgroundStars.transform.position.y, backgroundStars.transform.position.z);
         transform.position = startingPosition;
+    }
+
+    private IEnumerator WaitAndResume()
+    {
+        yield return new WaitForSeconds(3.0f);
+        Restore();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -187,7 +200,12 @@ public class VehicleController : MonoBehaviour
             numberOfLives--;
             VehicleOptionsController.instance.SubsctractLife();
             if (numberOfLives > 0) StartCoroutine(WaitAndResume());
-            else PlayerPrefs.SetInt("highScore", int.Parse(scoreField.text));
+            else
+            {
+                int hs = PlayerPrefs.GetInt("highScore");
+                if(int.Parse(scoreField.text) > hs) PlayerPrefs.SetInt("highScore", int.Parse(scoreField.text));
+                ContinuePanel.SetActive(true);
+            }
         }
         else if (collision.gameObject.tag == "Level")
         {
@@ -224,6 +242,8 @@ public class VehicleController : MonoBehaviour
         scoreField = GameObject.Find("ScoreCounter").GetComponent<Text>();
         EndPanel = GameObject.Find("EndChapterPanel");
         EndPanel.SetActive(false);
+        ContinuePanel = GameObject.Find("ContinuePanel");
+        ContinuePanel.SetActive(false);
         moonAccelerationConstant = VehicleOptionsController.instance.GetMoonAccelerationConstant();
         closeBackgroundSpeedFactor = VehicleOptionsController.instance.GetCloseBackgroundSpeedFactor();
         middleBackgroundSpeedFactor = VehicleOptionsController.instance.GetMiddleBackgroundSpeedFactor();

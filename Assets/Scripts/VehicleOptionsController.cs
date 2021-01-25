@@ -74,6 +74,7 @@ public class VehicleOptionsController : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         destroyedObstacles = new List<GameObject>();
+        if (SceneManager.GetActiveScene().name == "MainMenu") Destroy(gameObject);
     }
 
     // Start is called before the first frame update
@@ -176,6 +177,14 @@ public class VehicleOptionsController : MonoBehaviour
                 batteriesList[i].gameObject.SetActive(false);
                 break;
             }
+        }
+    }
+
+    public void RestoreLife()
+    {
+        foreach(Image i in batteriesList)
+        {
+            i.gameObject.SetActive(true);
         }
     }
 }

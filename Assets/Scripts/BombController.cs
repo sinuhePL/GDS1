@@ -12,6 +12,8 @@ public class BombController : MonoBehaviour
     [Range(2.0f, 8.0f)]
     [SerializeField] private float moonAccelerationConstant = 3.0f;
 
+    private Animator animator;
+
     protected float speed = 0.0f;
     protected Vector3 destination;
     protected float pausedSpeed;
@@ -33,17 +35,29 @@ public class BombController : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        BlastController blastController;
-
         if (collision.gameObject.tag == "Bullet")
         {
             Destroy(collision.gameObject);
+            Explode();
+        }
+
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Vehicle")
+            Explode();
+    }
+
+    private void Explode()
+    {
+        if (destructionBlastPrefab != null)
+        {
+            BlastController blastController = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
             Destroy(gameObject);
         }
-        if(collision.gameObject.tag == "Ground")
+        else if (animator != null)
+            animator.SetTrigger("Explode");
+        else
         {
-            blastController = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
             Destroy(gameObject);
+            Debug.LogWarning(gameObject.name + " has no explosion effect!");
         }
     }
 
@@ -53,6 +67,7 @@ public class BombController : MonoBehaviour
         destination = VehicleOptionsController.instance.dropZones[Random.Range(0, VehicleOptionsController.instance.dropZones.Length)].position;
         isPaused = false;
         EventsManager.instance.OnPausePressed += Pause;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -71,5 +86,10 @@ public class BombController : MonoBehaviour
     protected void OnDestroy()
     {
         EventsManager.instance.OnPausePressed -= Pause;
+    }
+
+    private void DestroyMe()
+    {
+        Destroy(gameObject);
     }
 }

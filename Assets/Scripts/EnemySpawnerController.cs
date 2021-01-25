@@ -9,6 +9,7 @@ public class EnemySpawnerController : MonoBehaviour
     [Header("Technical:")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private TextMeshPro scorePrefab;
+    [SerializeField] private AudioClip waveClip;
     [Header("For designers:")]
     [Tooltip("Number of enemies in wave")]
     [Range(1, 4)]
@@ -25,6 +26,7 @@ public class EnemySpawnerController : MonoBehaviour
     private Text scoreField;
     private int spawnedEnemiesCount;
     private bool isPaused;
+    private AudioSource myAudioSource;
 
     private void Pause()
     {
@@ -36,6 +38,7 @@ public class EnemySpawnerController : MonoBehaviour
         if (collision.gameObject.tag == "Vehicle")
         {
             StartCoroutine(SpawnEnemies());
+            myAudioSource.Play();
         }
     }
 
@@ -68,11 +71,14 @@ public class EnemySpawnerController : MonoBehaviour
         spawnedEnemiesCount = 0;
         isPaused = false;
         EventsManager.instance.OnPausePressed += Pause;
+        myAudioSource = gameObject.AddComponent<AudioSource>();
+        myAudioSource.clip = waveClip;
     }
 
     public void SpawnedEnemyKilled(Transform killedEnemy, Vector3 childPosition)
     {
         TextMeshPro scoreText;
+        if(enemyList.Count == 1 && spawnedEnemiesCount == enemiesCount) myAudioSource.Stop();
         if (enemyList.Count == 1 && spawnedEnemiesCount == enemiesCount && waveScore > 0)
         {
             scoreField.text = (int.Parse(scoreField.text) + waveScore).ToString("000000");

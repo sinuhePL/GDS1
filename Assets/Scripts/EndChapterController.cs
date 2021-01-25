@@ -18,10 +18,20 @@ public class EndChapterController : MonoBehaviour
     [SerializeField] private Text noBonusText;
     [SerializeField] private Text bonusField;
     [SerializeField] private Text brokenRecordText;
+    [SerializeField] private AudioClip endChapterClip;
+
+    private AudioSource myAudioSource;
+
+    private void Awake()
+    {
+        myAudioSource = gameObject.AddComponent<AudioSource>();
+        myAudioSource.clip = endChapterClip;
+    }
 
     private IEnumerator AddBonusPointsAndChangeChapter()
     {
         int additionalPoints = 0, averageTime, numberOfRuns, lastTime;
+        myAudioSource.Play();
         averageTime = int.Parse(averageTimeField.text);
         lastTime = int.Parse(timeField.text);
         while (int.Parse(timeField.text) < averageTime)

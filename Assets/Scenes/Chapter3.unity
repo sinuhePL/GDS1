@@ -896,6 +896,7 @@ MonoBehaviour:
     type: 3}
   scorePrefab: {fileID: 6188771287858638180, guid: d1c33642bd86c3a4cb0c0afe3849ed43,
     type: 3}
+  waveClip: {fileID: 8300000, guid: 5bbf9820eec0990479034126e52cb20e, type: 3}
   enemiesCount: 3
   enemiesDelay: 0.998
   spawnPoints:
@@ -2117,6 +2118,7 @@ MonoBehaviour:
     type: 3}
   scorePrefab: {fileID: 6188771287858638180, guid: d1c33642bd86c3a4cb0c0afe3849ed43,
     type: 3}
+  waveClip: {fileID: 8300000, guid: 5bbf9820eec0990479034126e52cb20e, type: 3}
   enemiesCount: 3
   enemiesDelay: 0.998
   spawnPoints:
@@ -4771,6 +4773,7 @@ MonoBehaviour:
     type: 3}
   scorePrefab: {fileID: 6188771287858638180, guid: d1c33642bd86c3a4cb0c0afe3849ed43,
     type: 3}
+  waveClip: {fileID: 8300000, guid: 242e8c9a6ca51d2439bb40d57898e9b7, type: 3}
   enemiesCount: 4
   enemiesDelay: 1.636
   spawnPoints:
@@ -10006,6 +10009,7 @@ MonoBehaviour:
     type: 3}
   scorePrefab: {fileID: 6188771287858638180, guid: d1c33642bd86c3a4cb0c0afe3849ed43,
     type: 3}
+  waveClip: {fileID: 8300000, guid: 5bbf9820eec0990479034126e52cb20e, type: 3}
   enemiesCount: 4
   enemiesDelay: 0.998
   spawnPoints:

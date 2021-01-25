@@ -6,13 +6,13 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
     [SerializeField] Image anaglyphImage;
     [SerializeField] AudioClip mouseOverClip;
-    [SerializeField] AudioClip mouseDownClip;
 
     private AudioSource audioSource;
 
-    private void Start()
+    private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.clip = mouseOverClip;
     }
     
     public void OnPointerEnter(PointerEventData pointerEventData)

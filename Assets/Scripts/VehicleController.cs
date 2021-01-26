@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class VehicleController : MonoBehaviour
 {
@@ -64,6 +65,7 @@ public class VehicleController : MonoBehaviour
     private AudioSource jumpAudioSource;
     private AudioSource landAudioSource;
     private AudioSource engineAudioSource;
+    private bool levelStarted;
 
     private void moveVehicle()
     {
@@ -177,6 +179,7 @@ public class VehicleController : MonoBehaviour
 
     private void Restore()
     {
+        engineAudioSource.Play();
         isDestroyed = false;
         VehicleOptionsController.instance.RespawnObstacles();
         currentVehicleSpeed = defaultVehicleSpeed;
@@ -209,6 +212,7 @@ public class VehicleController : MonoBehaviour
             EventsManager.instance.VehicleDestroyed();
             numberOfLives--;
             VehicleOptionsController.instance.SubsctractLife();
+            engineAudioSource.Stop();
             StartCoroutine(WaitAndResume());
         }
         else if (collision.gameObject.tag == "Level")
@@ -241,6 +245,33 @@ public class VehicleController : MonoBehaviour
         engineAudioSource = gameObject.AddComponent<AudioSource>();
         engineAudioSource.clip = engineClip;
         engineAudioSource.loop = true;
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (SceneManager.GetActiveScene().name == "Chapter1") StartCoroutine(Wait5Sec());
+        if (SceneManager.GetActiveScene().name == "Chapter2" || SceneManager.GetActiveScene().name == "Chapter3")
+        {
+            levelStarted = true;
+            engineAudioSource.Play();
+        }
+    }
+
+    private IEnumerator Wait5Sec()
+    {
+        yield return new WaitForSeconds(5.0f);
+        levelStarted = true;
+        engineAudioSource.Play();
     }
 
     void Start()
@@ -280,12 +311,12 @@ public class VehicleController : MonoBehaviour
         startingPosition = transform.position;
         isPaused = false;
         animator = GetComponent<Animator>();
-        engineAudioSource.Play();
+        levelStarted = false;
 }
 
     void Update()
     {
-        if (!isDestroyed)
+        if (!isDestroyed && levelStarted)
         {
             moveVehicle();
             moveGround();

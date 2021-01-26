@@ -7,6 +7,7 @@ public class ContinueController : MonoBehaviour
 {
     private AudioSource myAudioSource;
     private VehicleController myVehicle;
+    private GameObject myCanvas;
 
     void OnEnable()
     {
@@ -27,13 +28,13 @@ public class ContinueController : MonoBehaviour
     void Start()
     {
         myAudioSource = GetComponent<AudioSource>();
+        myCanvas = GameObject.Find("Canvas");
     }
 
     public void QuitToMainMenu()
     {
         myAudioSource.Play();
-        Destroy(VehicleOptionsController.instance);
-        Destroy(transform.parent);
+        Destroy(myCanvas);
         SceneManager.LoadScene("MainMenu");
     }
 

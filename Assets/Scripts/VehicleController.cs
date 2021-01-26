@@ -187,7 +187,13 @@ public class VehicleController : MonoBehaviour
     private IEnumerator WaitAndResume()
     {
         yield return new WaitForSeconds(3.0f);
-        Restore();
+        if (numberOfLives == 0) 
+        {
+            int hs = PlayerPrefs.GetInt("highScore");
+            if (int.Parse(scoreField.text) > hs) PlayerPrefs.SetInt("highScore", int.Parse(scoreField.text));
+            ContinuePanel.SetActive(true);
+        }
+        else Restore();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -199,13 +205,7 @@ public class VehicleController : MonoBehaviour
             EventsManager.instance.VehicleDestroyed();
             numberOfLives--;
             VehicleOptionsController.instance.SubsctractLife();
-            if (numberOfLives > 0) StartCoroutine(WaitAndResume());
-            else
-            {
-                int hs = PlayerPrefs.GetInt("highScore");
-                if(int.Parse(scoreField.text) > hs) PlayerPrefs.SetInt("highScore", int.Parse(scoreField.text));
-                ContinuePanel.SetActive(true);
-            }
+            StartCoroutine(WaitAndResume());
         }
         else if (collision.gameObject.tag == "Level")
         {

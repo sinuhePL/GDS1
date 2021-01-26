@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class DestroyMe : MonoBehaviour
 {
     [Header("Technical:")]
-    [SerializeField]
-    private BlastController destructionBlastPrefab;
+    [SerializeField] private bool destroyedByAnimation;
+    [SerializeField] private BlastController destructionBlastPrefab;
     [SerializeField] private bool isRespawned = false;
     [SerializeField] private AudioClip deathSound;
     [Header("For designers:")]
@@ -23,23 +23,19 @@ public class DestroyMe : MonoBehaviour
         BlastController bc;
         if(collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Vehicle")
         {
-            if(isRespawned)
-            {
-                VehicleOptionsController.instance.AddDestroyedObstacle(Instantiate(gameObject, transform.parent));
-            }
-            if (destructionBlastPrefab != null)
-            {
-                bc = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
-                if(deathSound != null) bc.PlaySound(deathSound);
-            }
+            if(isRespawned) VehicleOptionsController.instance.AddDestroyedObstacle(Instantiate(gameObject, transform.parent));
             if (collision.gameObject.tag == "Bullet")
             {
                 scoreField.text = (int.Parse(scoreField.text) + score).ToString("000000");
                 Destroy(collision.gameObject);
-            }
-            
+            }            
             if (animator != null) animator.SetTrigger("Die");
-            Destroy(gameObject);
+            if (destructionBlastPrefab != null)
+            {
+                bc = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
+                if (deathSound != null) bc.PlaySound(deathSound);
+            }
+            if (!destroyedByAnimation) Destroy(gameObject);
         }
     }
 

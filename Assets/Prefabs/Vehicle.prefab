@@ -631,6 +631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheel1: {fileID: 5540495497784968160}
   wheel2: {fileID: 1541871400700377638}
+  wheelSpeedMultiplier: 30
   bulletUpPrefab: {fileID: 8703001604257972225, guid: 3fd382e8a16a0564bb1dc2383574f48a,
     type: 3}
   bulletUpSpawnPoint: {fileID: 7815852522473584609}
@@ -639,7 +640,14 @@ MonoBehaviour:
   bulletForwardSpawnPoint: {fileID: 7815852522644666598}
   ground: {fileID: 0}
   backgroundClose: {fileID: 0}
+  backgroundMiddle: {fileID: 0}
   backgroundFar: {fileID: 0}
+  backgroundStars: {fileID: 0}
+  jumpClip: {fileID: 8300000, guid: 20a7201c485184946880dbd19e723d13, type: 3}
+  landClip: {fileID: 8300000, guid: 0a1512e6d7014a042bcb15404f8c8d22, type: 3}
+  shootUpClip: {fileID: 8300000, guid: 2d28370fcb6cd934ba45d4f7ba4c810a, type: 3}
+  shootForwardClip: {fileID: 8300000, guid: e3935b5a1efd11e47a39485829e032d4, type: 3}
+  engineClip: {fileID: 8300000, guid: e26da906f5f71594a8d2d7e0070e47f0, type: 3}
 --- !u!70 &7815852522687089978
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

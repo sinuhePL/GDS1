@@ -13,6 +13,7 @@ public class BombController : MonoBehaviour
     [SerializeField] private float moonAccelerationConstant = 3.0f;
 
     private Animator animator;
+    private AudioSource myAudioSource;
 
     protected float speed = 0.0f;
     protected Vector3 destination;
@@ -42,7 +43,10 @@ public class BombController : MonoBehaviour
         }
 
         if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Vehicle")
+        {
+            myAudioSource.Play();
             Explode();
+        }
     }
 
     private void Explode()
@@ -59,6 +63,11 @@ public class BombController : MonoBehaviour
             Destroy(gameObject);
             Debug.LogWarning(gameObject.name + " has no explosion effect!");
         }
+    }
+
+    private void Awake()
+    {
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update

@@ -24787,6 +24787,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 0a1512e6d7014a042bcb15404f8c8d22, type: 3}
     - target: {fileID: 7815852522687089983, guid: 6d41fc3c578c6b74c96ccff06fd65ec1,
         type: 3}
+      propertyPath: engineClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e26da906f5f71594a8d2d7e0070e47f0, type: 3}
+    - target: {fileID: 7815852522687089983, guid: 6d41fc3c578c6b74c96ccff06fd65ec1,
+        type: 3}
       propertyPath: shootUpClip
       value: 
       objectReference: {fileID: 8300000, guid: 2d28370fcb6cd934ba45d4f7ba4c810a, type: 3}

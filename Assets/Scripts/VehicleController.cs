@@ -23,6 +23,7 @@ public class VehicleController : MonoBehaviour
     [SerializeField] private AudioClip landClip;
     [SerializeField] private AudioClip shootUpClip;
     [SerializeField] private AudioClip shootForwardClip;
+    [SerializeField] private AudioClip engineClip;
 
     private Text levelField;
     private Text scoreField;
@@ -62,6 +63,7 @@ public class VehicleController : MonoBehaviour
     private AudioSource shootForwardAudioSource;
     private AudioSource jumpAudioSource;
     private AudioSource landAudioSource;
+    private AudioSource engineAudioSource;
 
     private void moveVehicle()
     {
@@ -92,6 +94,7 @@ public class VehicleController : MonoBehaviour
         if (Input.GetAxis("Fire1") > 0.0f && !isJumping && !isPaused)
         {
             isJumping = true;
+            engineAudioSource.pitch = defaultVehicleSpeed/4 * ((float)maxSpeedChange / 100.0f + 1.0f);
             animator.SetBool("IsJumping", true);
             upwardSpeed = jumpSpeed;
             jumpAudioSource.PlayOneShot(jumpClip);
@@ -116,6 +119,7 @@ public class VehicleController : MonoBehaviour
             currentVehicleSpeed += Time.deltaTime * vehicleAcceleration;
             transform.Translate(new Vector3(sidewaysVehicleSpeed * Time.deltaTime, 0.0f, 0.0f));
         }
+        if(!isJumping) engineAudioSource.pitch = currentVehicleSpeed/4.0f;
         if (Input.GetAxis("Fire2") > 0.0f && !isFiring && !isPaused)
         {
             isFiring = true;
@@ -234,6 +238,9 @@ public class VehicleController : MonoBehaviour
         shootForwardAudioSource = gameObject.AddComponent<AudioSource>();
         jumpAudioSource = gameObject.AddComponent<AudioSource>();
         landAudioSource = gameObject.AddComponent<AudioSource>();
+        engineAudioSource = gameObject.AddComponent<AudioSource>();
+        engineAudioSource.clip = engineClip;
+        engineAudioSource.loop = true;
     }
 
     void Start()
@@ -273,6 +280,7 @@ public class VehicleController : MonoBehaviour
         startingPosition = transform.position;
         isPaused = false;
         animator = GetComponent<Animator>();
+        engineAudioSource.Play();
 }
 
     void Update()

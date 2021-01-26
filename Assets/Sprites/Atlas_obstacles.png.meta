@@ -35,6 +35,9 @@ TextureImporter:
   - first:
       213: 5806468859718140016
     second: Gradient_mask
+  - first:
+      213: 6915999297355411508
+    second: Rock_small_back
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -7795,6 +7798,27 @@ TextureImporter:
       bones: []
       spriteID: 0700ed6f9a8b49050800000000000000
       internalID: 5806468859718140016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rock_small_back
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 487
+        width: 278
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43078b9e7b09aff50800000000000000
+      internalID: 6915999297355411508
       vertices: []
       indices: 
       edges: []

@@ -138,7 +138,7 @@ MonoBehaviour:
   destructionBlastPrefab: {fileID: 4504693794659268951, guid: 0d35022fbafe3294e8c0aea321927221,
     type: 3}
   moonAccelerationConstant: 3
-  holePrefab: {fileID: 1509286574107256258, guid: 3dcfa970beca17f439198f78e6543edd,
+  holePrefab: {fileID: 5610013847996746595, guid: a029a8d1c0791104fab37c638ae31394,
     type: 3}
 --- !u!114 &-9020085965606434694
 MonoBehaviour:

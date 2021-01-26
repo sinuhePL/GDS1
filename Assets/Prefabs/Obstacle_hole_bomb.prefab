@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 243265444679151943}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.02700026, y: 0.162, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.005, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 5610013847996746622}
   m_RootOrder: 2
@@ -379,7 +379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3556397603547991317
 Transform:
   m_ObjectHideFlags: 0
@@ -389,7 +389,7 @@ Transform:
   m_GameObject: {fileID: 1288419065268914697}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.02370026, y: 0.3473, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.0150002, z: 1}
   m_Children:
   - {fileID: 1322367236861176344}
   - {fileID: 1908197493794393115}
@@ -1671,7 +1671,7 @@ GameObject:
   - component: {fileID: 5610013847996746592}
   - component: {fileID: 7717191054099606254}
   m_Layer: 0
-  m_Name: Obstacle_hole_small
+  m_Name: Obstacle_hole_bomb
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1723,7 +1723,7 @@ Animator:
   m_GameObject: {fileID: 5610013847996746595}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 375ac0e27be14c64fb3b39468d5c6321, type: 2}
+  m_Controller: {fileID: 9100000, guid: 734cb9231e98be242aed09e5fc6504b1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1959,7 +1959,7 @@ SpriteMask:
   m_SortingOrder: 0
   m_Sprite: {fileID: 5806468859718140016, guid: 4636d2d88c96a4a418e009bd4ead2896,
     type: 3}
-  m_MaskAlphaCutoff: 0
+  m_MaskAlphaCutoff: 1
   m_FrontSortingLayerID: 150409667
   m_BackSortingLayerID: 150409667
   m_FrontSortingLayer: 1
@@ -2425,7 +2425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9169681970933723377
 Transform:
   m_ObjectHideFlags: 0

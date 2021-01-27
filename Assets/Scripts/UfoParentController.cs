@@ -62,10 +62,9 @@ public class UfoParentController : MonoBehaviour
         {
             step = moveSpeed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, animationStartPosition, step);
-            if(isRotating) transform.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * rotateSpeed));
+            //if(isRotating) transform.Rotate(new Vector3(0.0f, 0.0f, Time.deltaTime * rotateSpeed));
             yield return 0;
         }
-        transform.rotation = Quaternion.identity;
         if(myChildAnimator != null) myChildAnimator.enabled = true;
     }
 

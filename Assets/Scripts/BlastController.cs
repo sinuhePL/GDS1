@@ -56,7 +56,10 @@ public class BlastController : MonoBehaviour
         isPaused = false;        
         myParticleSystems = GetComponentsInChildren<ParticleSystem>();
 
-        StartCoroutine("RunParticleLifeCheck");
+        if (myParticleSystems.Length != 0)
+            StartCoroutine("RunParticleLifeCheck");
+        else
+            Destroy(gameObject, 2f);
     }
 
     // Update is called once per frame

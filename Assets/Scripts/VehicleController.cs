@@ -270,7 +270,7 @@ public class VehicleController : MonoBehaviour
 
     private IEnumerator Wait5Sec()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(1.0f);
         levelStarted = true;
         engineAudioSource.Play();
     }

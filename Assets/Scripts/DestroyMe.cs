@@ -32,7 +32,7 @@ public class DestroyMe : MonoBehaviour
             if (animator != null) animator.SetTrigger("Die");
             if (destructionBlastPrefab != null)
             {
-                bc = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation);
+                bc = Instantiate(destructionBlastPrefab, transform.position, destructionBlastPrefab.transform.rotation, transform.parent);
                 if (deathSound != null) bc.PlaySound(deathSound);
             }
             if (!destroyedByAnimation) Destroy(gameObject);

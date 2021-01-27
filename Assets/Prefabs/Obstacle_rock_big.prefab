@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4403169386322204531}
   - component: {fileID: 4403169386322204525}
   - component: {fileID: -4987388652247397705}
+  - component: {fileID: 3815842587213507909}
   m_Layer: 0
   m_Name: Obstacle_rock_big
   m_TagString: Obstacle
@@ -68,6 +69,25 @@ MonoBehaviour:
   isRespawned: 1
   deathSound: {fileID: 8300000, guid: 1e4805cbb9a98ea4cb2460ac78c50df9, type: 3}
   score: 100
+--- !u!95 &3815842587213507909
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4403169386322204526}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7863193136090932488
 GameObject:
   m_ObjectHideFlags: 0

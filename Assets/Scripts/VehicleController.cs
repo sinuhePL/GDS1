@@ -245,6 +245,7 @@ public class VehicleController : MonoBehaviour
         engineAudioSource = gameObject.AddComponent<AudioSource>();
         engineAudioSource.clip = engineClip;
         engineAudioSource.loop = true;
+        levelStarted = false;
     }
 
     void OnEnable()
@@ -311,7 +312,6 @@ public class VehicleController : MonoBehaviour
         startingPosition = transform.position;
         isPaused = false;
         animator = GetComponent<Animator>();
-        levelStarted = false;
 }
 
     void Update()

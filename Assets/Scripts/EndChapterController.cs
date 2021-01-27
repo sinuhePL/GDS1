@@ -8,6 +8,7 @@ public class EndChapterController : MonoBehaviour
 {
     [Header("Technical:")]
     [SerializeField] private GameObject timer;
+    [SerializeField] private GameObject continuePanel;
     [SerializeField] private Text level;
     [SerializeField] private Text levelField;
     [SerializeField] private Text timeField;
@@ -76,6 +77,7 @@ public class EndChapterController : MonoBehaviour
             PlayerPrefs.SetInt("numberOfRuns3", numberOfRuns);
         }
         if (additionalPoints > 0) scoreField.text = (int.Parse(scoreField.text) + int.Parse(bonusField.text)).ToString("000000");
+        continuePanel.SetActive(true);
         if (SceneManager.GetActiveScene().name == "Chapter1") SceneManager.LoadScene("Chapter2");
         else if (SceneManager.GetActiveScene().name == "Chapter2") SceneManager.LoadScene("Chapter3");
         timer.GetComponent<TimerController>().ResetCounter();

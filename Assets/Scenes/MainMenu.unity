@@ -772,11 +772,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Karol \u0141awicki (programista) \nZielony kod z Matrixa czyta szybiciej
-    niz elementarz \r\n\n\nSebastian Gajdzinski (art) \nJak umrze jego prace beda
-    warte tyle co Vincenta van Gogha\r\n\n\nMarta Zukowska (design) \nWiesz, czemu
-    tak milo Ci sie gra? Przez nia\n\n\nKrzysztof Majewski (design) \nJesli cos nie
-    dziala. "
+  m_Text: "Karol Lawicki (programista) \nZielony kod z Matrixa czyta szybiciej niz
+    elementarz \r\n\n\nSebastian Gajdzinski (art) \nJak umrze jego prace beda warte
+    tyle co Vincenta van Gogha\r\n\n\nMarta Zukowska (design) \nWiesz, czemu tak
+    milo Ci sie gra? Przez nia\n\n\nKrzysztof Majewski (design) \nJesli cos nie dziala. "
 --- !u!222 &574060173
 CanvasRenderer:
   m_ObjectHideFlags: 0

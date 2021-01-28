@@ -7525,7 +7525,7 @@ MonoBehaviour:
   defaultVehicleSpeed: 5
   maxSpeedChange: 33
   vehicleAcceleration: 0.8
-  sidewaysRange: 1.5
+  sidewaysRange: 2
   dropZones:
   - {fileID: 436187488}
   - {fileID: 1785389542}

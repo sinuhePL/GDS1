@@ -66,6 +66,7 @@ public class VehicleController : MonoBehaviour
     private AudioSource landAudioSource;
     private AudioSource engineAudioSource;
     private bool levelStarted;
+    private Animator dieImage;
 
     private void moveVehicle()
     {
@@ -193,7 +194,7 @@ public class VehicleController : MonoBehaviour
 
     private IEnumerator WaitAndResume()
     {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.5f);
         if (numberOfLives == 0) 
         {
             int hs = PlayerPrefs.GetInt("highScore");
@@ -213,6 +214,8 @@ public class VehicleController : MonoBehaviour
             numberOfLives--;
             VehicleOptionsController.instance.SubsctractLife();
             engineAudioSource.Stop();
+            dieImage.Play("Die_fade");
+            animator.Play("Rover_explosion");
             StartCoroutine(WaitAndResume());
         }
         else if (collision.gameObject.tag == "Level")
@@ -238,6 +241,7 @@ public class VehicleController : MonoBehaviour
 
     private void Awake()
     {
+        dieImage = GameObject.Find("DieImage").GetComponent<Animator>();
         shootUpAudioSource = gameObject.AddComponent<AudioSource>();
         shootForwardAudioSource = gameObject.AddComponent<AudioSource>();
         jumpAudioSource = gameObject.AddComponent<AudioSource>();

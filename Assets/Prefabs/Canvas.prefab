@@ -2400,6 +2400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 8324148375827820225}
+  continuePanel: {fileID: 0}
   level: {fileID: 8324148376500079178}
   levelField: {fileID: 8324148376253617664}
   timeField: {fileID: 8324148375389936612}
